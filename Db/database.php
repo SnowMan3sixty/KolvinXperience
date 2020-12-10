@@ -1,6 +1,6 @@
 <?php
 
-    $server = "localhost";
+    $server = "labs.iam.cat/localhost";
     $user = "a18rubonclop_kx";
     $pass = "123456";
     $table = "a18rubonclop_kx";
