@@ -1,0 +1,25 @@
+usuari:	
+	-id: int
+	-nom: varchar(30)
+	-contraseña: varchar(30)
+	-email: varchar(30)
+	-admin: boolean
+
+categoria: 
+	- id: int
+	- nombre: varchar(30)
+	
+experiencia:
+	-id: int
+	-titol: varchar(30)
+	-data_creacio: timestamp
+	-data_publicacio: timestamp
+	-descripcio: varchar(1000)
+	-url_imatge: varchar(1000)
+	-likes: int
+	-dislikes: int
+	-estado: int
+	-foreign key 1-n id categoria
+
+
+
