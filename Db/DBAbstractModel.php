@@ -5,8 +5,7 @@
         private static $db_host = "localhost";
         private static $db_user = "a18rubonclop_kx";
         private static $db_pass = "123456";
-
-        protected $db_name;
+        private static $db_name = "a18rubonclop_kx";
 
         protected $query;
 
@@ -20,7 +19,7 @@
         abstract protected function delete();
 
         private function open_connection() {
-            $this->conn = new mysqli (self::$db_host, self::$db_user, self::$db_pass, $this->db_name);
+            $this->conn = new mysqli (self::$db_host, self::$db_user, self::$db_pass, self::$db_name);
         }
         
         private function close_connection(){

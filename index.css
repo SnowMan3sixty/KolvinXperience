@@ -122,11 +122,11 @@
     opacity: 0;
 }
 
-.popup #formulario .contenedor-inputs {
+.popup form .contenedor-inputs {
     opacity: 0;
 }
 
-.popup #formulario .contenedor-inputs input {
+.popup form .contenedor-inputs input {
     width: 100%;
     margin-bottom: 20px;
     height: 52px;
@@ -136,7 +136,7 @@
     border: 1px solid #BBBBBB;
 }
 
-.popup #formulario .btn-submit {
+.popup form .btn-submit {
     padding: 0 20px;
     height: 40px;
     line-height: 40px;
@@ -150,7 +150,7 @@
     transition: .3s ease all;
 }
 
-.popup #formulario .btn-submit:hover {
+.popup form .btn-submit:hover {
     background: rgba(94,125,227, .9);
 }
 

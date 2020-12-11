@@ -20,7 +20,7 @@
     }
     
     function __destruct() {
-        unset ($this);
+        //unset($this);
     }
     
     public function select($userName="") {
