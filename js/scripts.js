@@ -12,7 +12,7 @@ function printNoLogged() {
             for(let i = 0; i< resultObj.length; i++){
                 var experiencia = resultObj[i];
 
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx">' + experiencia['titol'] + '</div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
             }
 
         }
