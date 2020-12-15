@@ -41,7 +41,7 @@ body {
 	margin-bottom: 20px;
 }
 
-.contenedor #index .btn-abrir-popup {
+.hindex .navOpciones .btn-popup {
 	padding: 0 20px;
 	margin-bottom: 20px;
 	height: 40px;
@@ -57,7 +57,7 @@ body {
 	cursor: pointer;
 }
 
-.contenedor #index .btn-abrir-popup:hover {
+.hindex .navOpciones .btn-popup:hover {
 	background: rgba(94,125,227, .9);
 }
 
@@ -79,6 +79,30 @@ body {
 
 #logout .btn-logout:hover {
 	background: rgba(94,125,227, .9);
+}
+
+.hindex{
+    text-align: center;
+    background-color: #E8E1D3;
+    
+}
+
+.logo{
+    padding: 10px;
+}
+
+.navOpciones{
+    z-index:100;
+    background-color: #1B3353;
+    padding: 1%;
+}
+
+.btn-popup{
+    color: #FFFFFF;
+    margin: 1%;
+    text-align: center;
+    font-size: 16px;
+    font-style: bold;
 }
 
 /* ------------------------- */
