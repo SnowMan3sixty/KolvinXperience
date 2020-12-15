@@ -1,0 +1,68 @@
+.content {
+    border: 2px solid black;
+}
+
+.editbutton {
+    margin: 10px;
+    height: 20px;
+    width: 40px;
+    border: 2px solid orange;
+}
+
+.title {
+    margin: 10px;
+    height: 20px;
+    border: 2px solid orange;
+}
+
+.image {
+    margin: 10px;
+    height: 40px;
+    border: 2px solid orange;
+}
+
+.descripcio {
+    margin: 10px;
+    height: 40px;
+    border: 2px solid orange;
+}
+
+.mapa {
+    margin: 10px;
+    height: 40px;
+    border: 2px solid orange;
+}
+
+.descripciomap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.footerExperiencia {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.data {
+    margin: 10px;
+    height: 20px;
+    border: 2px solid orange;
+}
+
+.categoria {
+    margin: 10px;
+    height: 20px;
+    border: 2px solid orange;
+}
+
+.likes {
+    margin: 10px;
+    height: 20px;
+    border: 2px solid orange;
+}
+
+.dislikes {
+    margin: 10px;
+    height: 20px;
+    border: 2px solid orange;
+}
