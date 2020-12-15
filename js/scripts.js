@@ -90,6 +90,7 @@ $(document).ready(function(){
             }
         });
     });
+
     $('#registrar').click(function() {
         var username = $('#usuarioreg').val();
         var password = $('#passreg').val();

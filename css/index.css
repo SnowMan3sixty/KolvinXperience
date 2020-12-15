@@ -39,7 +39,18 @@ body {
   
   .header-left {
       text-align: left;
+      /*transition: transform 2s;*/
+      animation: logo 5s infinite;
   }
+
+  @keyframes logo {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+  }
+
+  /*.header-left:hover{
+    transform: rotate(360deg);
+  }*/
   .header-center {
       text-align: center;
       font-size: 50px;
