@@ -55,7 +55,7 @@
     <!-- Popups -->
     <div class="overlay" id="overlay">
       <div class="popup" id="popup">
-        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</i></a>
         <h3>Login - KolvinXperience</h3>
         <div id="formulario">
           <div class="contenedor-inputs">
@@ -72,7 +72,7 @@
     </div>
     <div class="overlay" id="overlayreg">
       <div class="popup" id="popupreg">
-        <a href="#" id="btn-cerrar-popupreg" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+      <div>        <a href="#" id="btn-cerrar-popupreg" class="btn-cerrar-popup">X</i></a></div>
         <h3>Registrar - KolvinXperience</h3>
         <div id="formulario">
           <div class="contenedor-inputs">

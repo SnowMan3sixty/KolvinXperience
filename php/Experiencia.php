@@ -9,7 +9,7 @@ class Experiencia extends DBAbstractModel {
     }
 
     public function selectUltimesExperiencies() {
-        $this->query = "SELECT * FROM experiencia ORDER BY fecha_publ DESC LIMIT 5";
+        $this->query = "SELECT * FROM experiencia ORDER BY fecha_publ DESC LIMIT 6";
         $this->get_results_from_query();
 
         if (count($this->rows)==1) {
