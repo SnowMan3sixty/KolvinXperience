@@ -35,7 +35,7 @@
             <button id="btn-registrar" class="btn-popup">Registrar</button>
         </div>
     </div>
-        <div id="bienvenida"></div>
+    <div id="bienvenida"></div>
 
     <h1 align="center">Últimas Experiencias</h1>
 
@@ -54,40 +54,38 @@
 
     <!-- Popups -->
     <div class="overlay" id="overlay">
-        <div class="popup" id="popup">
-            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-            <h3>Login - KolvinXperience</h3>
-            <div id="formulario">
-              <div class="contenedor-inputs">
-                <form class="form-login">
-                    <label for="inputUser" class="sr-only">User</label>
-                  <input id="usuario" type="text" placeholder="Usuario" required>
-                  <input id="pass" type="password" placeholder="Contraseña" required>
-                </form>
-                <p id="messageReg" class= "message-error"></p>
-              </div>
-              <button id="login" type="submit" class="btn-submit">Login</button>
-            </div>
+      <div class="popup" id="popup">
+        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+        <h3>Login - KolvinXperience</h3>
+        <div id="formulario">
+          <div class="contenedor-inputs">
+            <form class="form-login">
+              <label for="inputUser" class="sr-only">User</label>
+              <input id="usuario" type="text" placeholder="Usuario" required>
+              <input id="pass" type="password" placeholder="Contraseña" required>
+            </form>
+            <p id="messageReg" class= "message-error"></p>
           </div>
+          <button id="login" type="submit" class="btn-submit">Login</button>
         </div>
+      </div>
     </div>
     <div class="overlay" id="overlayreg">
-        <div class="popup" id="popupreg">
-            <a href="#" id="btn-cerrar-popupreg" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-            <h3>Registrar - KolvinXperience</h3>
-            <div id="formulario">
-              <div class="contenedor-inputs">
-                <form class="form-reg">
-                    <label for="inputUser" class="sr-only">User</label>
-                  <input id="usuarioreg" type="text" placeholder="Usuario" required>
-                  <input id="passreg" type="password" placeholder="Contraseña" required>
-                </form>
-                <p id="messageReg" class= "message-error"></p>
-              </div>
-              <button id="registrar" type="submit" class="btn-submit">Registrar</button>
-            </div>
+      <div class="popup" id="popupreg">
+        <a href="#" id="btn-cerrar-popupreg" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+        <h3>Registrar - KolvinXperience</h3>
+        <div id="formulario">
+          <div class="contenedor-inputs">
+            <form class="form-reg">
+              <label for="inputUser" class="sr-only">User</label>
+              <input id="usuarioreg" type="text" placeholder="Usuario" required>
+              <input id="passreg" type="password" placeholder="Contraseña" required>
+            </form>
+            <p id="messageReg" class= "message-error"></p>
           </div>
+          <button id="registrar" type="submit" class="btn-submit">Registrar</button>
         </div>
+      </div>
     </div>
         <!-- Footer -->
 

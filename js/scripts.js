@@ -1,5 +1,5 @@
 function printNoLogged() {
-    $('#bienvenida').html('<div class="container"><div class="row"><div ><h1>Bienvenido</h1><br><p id="mensajeBienvenida">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae officiacumque nostrum neque, incidunt corrupti. Eaque praesentium modi cumque amet aliquam ea fugitexplicabo dolores quod sapiente? Repudiandae, quae. Ut.</p></div></div></div>');
+    $('#bienvenida').html('<div class="container"><div class="row"><div><h1>Bienvenido</h1><br><p id="mensajeBienvenida">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae officiacumque nostrum neque, incidunt corrupti. Eaque praesentium modi cumque amet aliquam ea fugitexplicabo dolores quod sapiente? Repudiandae, quae. Ut.</p></div></div></div>');
     $.ajax({
         url: "php/getExperiencies.php",
         type: "post",
@@ -20,7 +20,8 @@ function printNoLogged() {
 }
 
 function printLogged() {
-    $('#bienvenida').modal('hide');
+    $('#bienvenida').hide();
+    $('#overlay').hide();
 
     $.ajax({
         url: "php/getExperiencies.php",
@@ -30,7 +31,7 @@ function printLogged() {
 
             printExperiencias(resultObj);
         }
-    });    
+    });
 }
 
 function printExperiencias(experiencies){
