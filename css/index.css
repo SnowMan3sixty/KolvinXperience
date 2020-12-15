@@ -8,49 +8,58 @@ body {
     padding: 30px;
     /* padding-top: 5px;
       padding-bottom: 20px; */
-    display: flex;
-    background: #1cc4fb;
-    color: #0038b9;
-    justify-content: space-around;
-    /* width: 100%; */
-}
+      display: flex;
+      background: #1cc4fb;
+      color: #0038b9;
+      justify-content: space-around;
+      /* width: 100%; */
+  }
+  
+  #title {
+  text-align: center;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 90px;
+  transform: skewY(-10deg);
+  letter-spacing: 4px;
+  word-spacing: -8px;
+  color: #0038b9;
+  text-shadow: 
+      -1px -1px 0 #00257a,
+      -2px -2px 0 #00257a,
+      -3px -3px 0 #00257a,
+      -4px -4px 0 #00257a,
+      -5px -5px 0 #00257a,
+      -6px -6px 0 #00257a,
+      -7px -7px 0 #00257a,
+      -8px -8px 0 #00257a,
+      -30px 20px 40px blue
+  }
+  
+  /* Fin Header */
+  
+  .header-left {
+      text-align: left;
+      /*transition: transform 2s;*/
+      animation: logo 5s infinite;
+  }
 
-#title {
-    text-align: center;
-    font-family: 'Oswald', Helvetica, sans-serif;
-    font-size: 90px;
-    transform: skewY(-10deg);
-    letter-spacing: 4px;
-    word-spacing: -8px;
-    color: #0038b9;
-    text-shadow:
-        -1px -1px 0 #00257a,
-        -2px -2px 0 #00257a,
-        -3px -3px 0 #00257a,
-        -4px -4px 0 #00257a,
-        -5px -5px 0 #00257a,
-        -6px -6px 0 #00257a,
-        -7px -7px 0 #00257a,
-        -8px -8px 0 #00257a,
-        -30px 20px 40px blue
-}
+  @keyframes logo {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+  }
 
-/* Fin Header */
-
-.header-left {
-    text-align: left;
-}
-
-.header-center {
-    text-align: center;
-    font-size: 50px;
-}
-
-.header-right {
-    text-align: right;
-}
-
-.navbar {
+  /*.header-left:hover{
+    transform: rotate(360deg);
+  }*/
+  .header-center {
+      text-align: center;
+      font-size: 50px;
+  }
+  .header-right {
+      text-align: right;
+  }
+  
+  .navbar {
     padding: 10px 16px;
     background: #1B3353;
     color: #f1f1f1;

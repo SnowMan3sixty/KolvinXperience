@@ -55,12 +55,11 @@
     <!-- Popups -->
     <div class="overlay" id="overlay">
       <div class="popup" id="popup">
-        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</i></a>
+        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
         <h3>Login - KolvinXperience</h3>
         <div id="formulario">
           <div class="contenedor-inputs">
             <form class="form-login">
-              <label for="inputUser" class="sr-only">User</label>
               <input id="usuario" type="text" placeholder="Usuario" required>
               <input id="pass" type="password" placeholder="Contraseña" required>
             </form>
@@ -72,12 +71,11 @@
     </div>
     <div class="overlay" id="overlayreg">
       <div class="popup" id="popupreg">
-      <div>        <a href="#" id="btn-cerrar-popupreg" class="btn-cerrar-popup">X</i></a></div>
+        <div><a href="#" id="btn-cerrar-popupreg" class="btn-cerrar-popup">X</a></div>
         <h3>Registrar - KolvinXperience</h3>
         <div id="formulario">
           <div class="contenedor-inputs">
             <form class="form-reg">
-              <label for="inputUser" class="sr-only">User</label>
               <input id="usuarioreg" type="text" placeholder="Usuario" required>
               <input id="passreg" type="password" placeholder="Contraseña" required>
             </form>
