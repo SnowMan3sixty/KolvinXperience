@@ -41,29 +41,15 @@
           <div class="popup" id="popup">
             <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
             <h3>Login - KolvinXperience</h3>
-            <form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
+            <div id="formulario">
               <div class="contenedor-inputs">
                 <input id="usuario" type="text" placeholder="Usuario" name="usuario">
                 <input id="pass" type="password" placeholder="Contraseña" name="pass">
               </div>
               <input id="login" type="submit" class="btn-submit" value="Login" name="login">
-            </form>
+            </div>
           </div>
         </div>
-
-        <?php
-          if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["login"]){
-              require_once("Db/usuaris.php");
-              $usuarioBD = new User();
-              $usuarioBD->select($_POST["usuario"]);
-              if($_POST["usuario"] == $usuarioBD){
-                echo "Bienvenido ".$_POST["usuario"];
-                console.log("Hola KEVIN")
-              }
-              console.log("Hola PAU")
-          }
-
-        ?>
 
         <div id="panel" style="display: none;">
           <p>Estás logueado</p>
