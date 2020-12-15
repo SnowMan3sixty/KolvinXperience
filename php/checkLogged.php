@@ -2,7 +2,7 @@
 
     session_start();
 
-    if (empty($_COOKIE['user'])) {
+    if (empty($_SESSION['user'])) {
         echo 'false';
     }else{
         echo 'true';

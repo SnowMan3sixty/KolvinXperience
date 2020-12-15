@@ -15,7 +15,7 @@ class Usuari extends DBAbstractModel {
             foreach ($this->rows[0] as $property => $value)
             $this->$property = $value;
             session_start();
-            $_COOKIE['user']= $this->rows[0]['id'];
+            $_SESSION['user']= $this->rows[0]['id'];
             return $this->rows;
         }
         else{
