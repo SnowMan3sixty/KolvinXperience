@@ -19,6 +19,18 @@ class Experiencia extends DBAbstractModel {
 
         return $this->rows;
     }
+
+    public function selectUltimesExperienciesSenseLimits() {
+        $this->query = "SELECT * FROM experiencia ORDER BY fecha_publ";
+        $this->get_results_from_query();
+
+        if (count($this->rows)==1) {
+            foreach ($this->rows[0] as $property => $value)
+            $this->$property = $value;
+        }
+
+        return $this->rows;
+    }
     
 }
 
