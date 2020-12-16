@@ -22,6 +22,9 @@ function printNoLogged() {
 function printLogged() {
     $('#bienvenida').hide();
     $('#overlay').hide();
+    $('#btn-logout').show();
+    $('#btn-abrir-popup').hide();
+    $('#btn-registrar').hide();
 
     $.ajax({
         url: "php/getExperiencies.php",

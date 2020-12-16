@@ -117,6 +117,11 @@ body {
     float: right;
 }
 
+#btn-logout {
+    float: right;
+    text-decoration: none;
+}
+
 .overlay {
     background: rgba(0, 0, 0, .3);
     position: fixed;

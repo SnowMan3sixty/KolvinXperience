@@ -29,10 +29,12 @@
     <?php include('header.php');?>
 
     <div class="navbar" id="navbar">
-        <img id="logo" src="./img/logo.png">
+        <a id="logo" href = "#top"><img src="./img/logo.png" alt="logo" width="100" height="70"></a>
+        <!-- <img id="logo" src="./img/logo.png"> -->
         <div class="col-7 col-lg-4" id="headerRight" style="margin-top: 5px;">
             <button id="btn-abrir-popup" class="btn-popup">Ir al Login</button>
             <button id="btn-registrar" class="btn-popup">Registrar</button>
+            <a href="logout.php" style="display: none;" id="btn-logout" class="btn-popup">Salir</a>
         </div>
     </div>
     <div id="bienvenida"></div>
@@ -63,7 +65,7 @@
               <input id="usuario" type="text" placeholder="Usuario" required>
               <input id="pass" type="password" placeholder="Contraseña" required>
             </form>
-            <p id="messageReg" class= "message-error"></p>
+            <p id="message" class= "message-error"></p>
           </div>
           <button id="login" type="submit" class="btn-submit">Login</button>
         </div>
