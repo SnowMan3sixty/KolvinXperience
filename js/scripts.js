@@ -153,8 +153,13 @@ $(document).ready(function(){
                 contenido: contenido
             },
             success: function(result){
-                var resultObj = JSON.parse(result);
-                printExperiencias(resultObj);
+                if(result == 'OK'){
+                    var resultObj = JSON.parse(result);
+                    printExperiencias(resultObj);
+                }
+                else{
+                    printNoLogged();
+                }
             }
         });
     });
