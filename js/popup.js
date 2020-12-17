@@ -29,3 +29,19 @@ btnCerrarPopupreg.addEventListener('click', function(e){
 	overlayreg.classList.remove('active');
 	popupreg.classList.remove('active');
 });
+
+var btnCrear = document.getElementById('btn-crear'),
+	overlayCrear = document.getElementById('overlayCrear'),
+	popupCrear = document.getElementById('popupCrear'),
+	btnCerrarPopupCrear = document.getElementById('btn-cerrar-popupCrear');
+
+btnCrear.addEventListener('click', function(){
+	overlayCrear.classList.add('active');
+	popupCrear.classList.add('active');
+});
+
+btnCerrarPopupCrear.addEventListener('click', function(e){
+	e.preventDefault();
+	overlayCrear.classList.remove('active');
+	popupCrear.classList.remove('active');
+});

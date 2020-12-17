@@ -39,7 +39,26 @@
     </div>
     <div id="bienvenida"></div>
 
-    <h1 align="center">Últimas Experiencias</h1>
+    <div style="text-align: center;">
+      <h1>Últimas Experiencias</h1>
+      <button id="btn-crear" class="btn-popup">Crear experiencia</button>
+    </div>
+    <div class="overlay" id="overlayCrear">
+      <div class="popup" id="popupCrear">
+        <div><a href="#" id="btn-cerrar-popupCrear" class="btn-cerrar-popup">X</a></div>
+        <h3>Crea tu experiencia</h3>
+        <div id="formulario">
+          <div class="contenedor-inputs">
+            <form class="form-Crear">
+              <input id="tituloCrear" type="text" placeholder="Título" required>
+              <input id="contenidoCrear" type="text" placeholder="Contenido" required>
+            </form>
+            <p id="messageCrear" class= "message-error"></p>
+          </div>
+          <button id="crearXP" type="submit" class="btn-submit">Crear Experiencia</button>
+        </div>
+      </div>
+    </div>
 
     <div class="container margin-bottom-20">
         <div class="row d-flex flex-row-reverse bd-highlight col-12">

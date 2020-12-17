@@ -31,6 +31,11 @@ class Experiencia extends DBAbstractModel {
 
         return $this->rows;
     }
+
+    public function crearExperiencia($titulo, $contenido){
+        $this->query = "INSERT INTO experiencia (titol, contingut) VALUES ('$titulo', '$contenido')";
+        $this->execute_single_query();
+    }
     
 }
 

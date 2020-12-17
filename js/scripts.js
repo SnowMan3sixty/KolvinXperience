@@ -37,7 +37,7 @@ function printLogged() {
     });
 }
 
-function printExperiencias(experiencies){
+function printExperiencias(){
 
     // var experienciesDiv = $('#experiencies');
     // experienciesDiv.html('');
@@ -135,6 +135,26 @@ $(document).ready(function(){
                 }
     
                 $("#messageReg").html(msg);
+            }
+        });
+    });
+
+    $('#btn-crear').click(function() {
+        var titulo = $('#tituloCrear').val();
+        var contenido = $('#contenidoCrear').val();
+        console.log(titulo);
+        console.log(contenido);
+        //AQUI
+        $.ajax({
+            url: "php/crearExperiencia.php",
+            type: "post",
+            data: {
+                titulo: titulo,
+                contenido: contenido
+            },
+            success: function(result){
+                var resultObj = JSON.parse(result);
+                printExperiencias(resultObj);
             }
         });
     });
