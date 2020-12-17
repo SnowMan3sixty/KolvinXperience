@@ -12,7 +12,7 @@ function printNoLogged() {
             for(let i = 0; i< resultObj.length; i++){
                 var experiencia = resultObj[i];
 
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
             }
 
         }
@@ -63,6 +63,10 @@ $(document).ready(function(){
             }
             
         }
+    });
+    
+    $('#experiencia0').click(function() {
+        console.log("HOLA");
     });
 
     $('#login').click(function() {

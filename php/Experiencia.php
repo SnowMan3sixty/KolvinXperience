@@ -19,6 +19,10 @@ class Experiencia extends DBAbstractModel {
 
         return $this->rows;
     }
+
+    public function selectExperiencia(){
+        
+    }
     
 }
 
