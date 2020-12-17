@@ -117,6 +117,31 @@ body {
     float: right;
 }
 
+#btn-logout {
+    float: right;
+    text-decoration: none;
+}
+
+#btn-crear{
+    padding: 0 20px;
+    margin-bottom: 5px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background: #5E7DE3;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+#btn-crear:hover{
+    background: rgba(94, 125, 227, .9);
+}
+
 .overlay {
     background: rgba(0, 0, 0, .3);
     position: fixed;
@@ -142,7 +167,6 @@ body {
     padding: 20px;
     text-align: center;
     width: 600px;
-
     transition: .3s ease all;
     transform: scale(0.7);
     opacity: 0;

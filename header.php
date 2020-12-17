@@ -1,6 +1,6 @@
 <div class="header">
     <div class="header-left">
-        <a href = "#top"><img src="./img/logo.png" alt="logo" width="500px" height="350px"></a>
+        <img src="./img/logo.png" alt="logo" width="500px" height="350px">
     </div>
     <div class="header-center">
         <h1 id="title"> Kolvin<br> Xperience</h1>

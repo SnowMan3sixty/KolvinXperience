@@ -22,6 +22,9 @@ function printNoLogged() {
 function printLogged() {
     $('#bienvenida').hide();
     $('#overlay').hide();
+    $('#btn-logout').show();
+    $('#btn-abrir-popup').hide();
+    $('#btn-registrar').hide();
 
     $.ajax({
         url: "php/getExperiencies.php",
@@ -34,18 +37,36 @@ function printLogged() {
     });
 }
 
-function printExperiencias(experiencies){
+function printExperiencias(){
 
-    var experienciesDiv = $('#experiencies');
-    experienciesDiv.html('');
+    // var experienciesDiv = $('#experiencies');
+    // experienciesDiv.html('');
 
-    for(let i = 0; i< experiencies.length; i++){
-        var experiencia = experiencies[i];
+    // for(let i = 0; i< experiencies.length; i++){
+    //     var experiencia = experiencies[i];
         
-        var fecha = new Date(experiencia['fecha_publ']);
+    //     var fecha = new Date(experiencia['fecha_publ']);
 
-        experienciesDiv.html(experienciesDiv.html() + '<p> aqui va lista experiencias</p>');
-    }
+    //     experienciesDiv.html(experienciesDiv.html() + '<p> aqui va lista experiencias</p>');
+    // }
+
+    $.ajax({
+        url: "php/getAllExperiencies.php",
+        type: "post",
+        success: function(result){
+            var resultObj = JSON.parse(result);
+
+            var experienciesDiv = $('#experiencies');
+            experienciesDiv.html('');
+
+            for(let i = 0; i< resultObj.length; i++){
+                var experiencia = resultObj[i];
+
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
+            }
+
+        }
+    });
 };
 
 //Botones
@@ -118,6 +139,26 @@ $(document).ready(function(){
                 }
     
                 $("#messageReg").html(msg);
+            }
+        });
+    });
+
+    $('#btn-crear').click(function() {
+        var titulo = $('#tituloCrear').val();
+        var contenido = $('#contenidoCrear').val();
+        console.log(titulo);
+        console.log(contenido);
+        //AQUI
+        $.ajax({
+            url: "php/crearExperiencia.php",
+            type: "post",
+            data: {
+                titulo: titulo,
+                contenido: contenido
+            },
+            success: function(result){
+                var resultObj = JSON.parse(result);
+                printExperiencias(resultObj);
             }
         });
     });
