@@ -25,6 +25,7 @@ function printLogged() {
     $('#btn-logout').show();
     $('#btn-abrir-popup').hide();
     $('#btn-registrar').hide();
+    $('#btn-crear').show();
 
     $.ajax({
         url: "php/getExperiencies.php",
@@ -38,18 +39,6 @@ function printLogged() {
 }
 
 function printExperiencias(){
-
-    // var experienciesDiv = $('#experiencies');
-    // experienciesDiv.html('');
-
-    // for(let i = 0; i< experiencies.length; i++){
-    //     var experiencia = experiencies[i];
-        
-    //     var fecha = new Date(experiencia['fecha_publ']);
-
-    //     experienciesDiv.html(experienciesDiv.html() + '<p> aqui va lista experiencias</p>');
-    // }
-
     $.ajax({
         url: "php/getAllExperiencies.php",
         type: "post",
@@ -64,7 +53,6 @@ function printExperiencias(){
 
                 experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
             }
-
         }
     });
 };
@@ -139,11 +127,12 @@ $(document).ready(function(){
         });
     });
 
-    $('#btn-crear').click(function() {
+    $('#crearXP').click(function() {
         var titulo = $('#tituloCrear').val();
         var contenido = $('#contenidoCrear').val();
         console.log(titulo);
         console.log(contenido);
+        $('#overlayCrear').hide();
         //AQUI
         $.ajax({
             url: "php/crearExperiencia.php",
@@ -152,9 +141,8 @@ $(document).ready(function(){
                 titulo: titulo,
                 contenido: contenido
             },
-            success: function(result){
-                var resultObj = JSON.parse(result);
-                printExperiencias(resultObj);
+            success: function(){
+                printExperiencias();
             }
         });
     });
