@@ -12,7 +12,10 @@ function printNoLogged() {
             for(let i = 0; i< resultObj.length; i++){
                 var experiencia = resultObj[i];
 
-                experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img><button id="btn-verExperiencia'+i+'" class="btn-popup">Examinar</button></div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + 
+                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img><button id="btn-verExperiencia'+i+'" class="btn-popup">Examinar</button></div>');
+
+                activeShowMoreButton(i,experiencia['id']);
             }
 
         }
@@ -52,10 +55,50 @@ function printExperiencias(){
                 var experiencia = resultObj[i];
 
                 experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
+                
             }
         }
     });
 };
+function activeShowMoreButton(i,id){
+    console.log("activeShowMoreButton i=" + i + " id = " + id );
+  /*  var nombreBoton = "btn-verExperiencia" + i;
+    console.log(nombreBoton);
+    document.getElementById(nombreBoton).addEventListener("click",function(){
+        console.log("ENTRAS EN NUEVO LISTENER");
+    });*/
+    $('#btn-verExperiencia5').click(function() {
+        $.ajax({
+            url: "php/verExperiencia.php",
+            type: "post",
+            data:{
+                id: id
+            },
+            success: function(result){
+
+                var resultObject = JSON.parse(result);
+                var experiencia = resultObject[0];
+
+                var titulo = experiencia['titol'];
+                var contenido = experiencia['contenido'];
+                var imatge = experiencia['imatge'];
+                var coordenadas = experiencia['coordenadas'];
+                var estat = experiencia['estat'];
+                var likes = experiencia['valoracioPos'];
+                var dislikes = experiencia['valoriacioNeg'];
+                var data_publicacio = experiencia['fecha_publ'];
+                console.log(titulo);
+                console.log(contenido);
+                console.log(imatge);
+                console.log(coordenadas);
+                console.log(estat);
+                console.log(likes);
+                console.log(dislikes);
+                console.log(data_publicacio);
+            }
+        });        
+    });
+}
 
 //Botones
 $(document).ready(function(){
@@ -146,4 +189,6 @@ $(document).ready(function(){
             }
         });
     });
+
+    
 });
