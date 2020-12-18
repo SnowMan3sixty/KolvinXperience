@@ -33,10 +33,8 @@ function printLogged() {
     $.ajax({
         url: "php/getExperiencies.php",
         type: "post",
-        success: function(result){
-            var resultObj = JSON.parse(result);
-
-            printExperiencias(resultObj);
+        success: function(){
+            printExperiencias();
         }
     });
 }
@@ -52,14 +50,12 @@ function printExperiencias(){
             experienciesDiv.html('');
 
             for(let i = 0; i< resultObj.length; i++){
-                var experiencia = resultObj[i];
-
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
-                
+                var xperiencia = resultObj[i];
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button></div>');
             }
         }
     });
-};
+}
 function activeShowMoreButton(i,id){
     console.log("activeShowMoreButton i=" + i + " id = " + id );
   /*  var nombreBoton = "btn-verExperiencia" + i;
@@ -92,6 +88,24 @@ function activeShowMoreButton(i,id){
         });        
     });
 }
+
+$('#experiencies').on("click", "#eliminar", function(){
+    if(confirm("¿Estás seguro de que deseas eliminar esta experiencia?")){
+        console.log("Dentro del if");
+        var id = $(this).attr("numID");
+        console.log(id);
+        $.ajax({
+            url: "php/eliminarExperiencia.php",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function(){
+                printExperiencias();
+            }
+        });
+    }
+});
 
 //Botones
 $(document).ready(function(){

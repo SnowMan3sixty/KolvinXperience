@@ -50,6 +50,11 @@ class Experiencia extends DBAbstractModel {
 
         return "OK";
     }
+
+    public function eliminarExperiencia($id){
+        $this->query = "DELETE FROM experiencia WHERE id = '$id'";
+        $this->execute_single_query();
+    }
     
 }
 
