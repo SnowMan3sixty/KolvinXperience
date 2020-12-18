@@ -30,10 +30,8 @@ function printLogged() {
     $.ajax({
         url: "php/getExperiencies.php",
         type: "post",
-        success: function(result){
-            var resultObj = JSON.parse(result);
-
-            printExperiencias(resultObj);
+        success: function(){
+            printExperiencias();
         }
     });
 }
@@ -49,13 +47,53 @@ function printExperiencias(){
             experienciesDiv.html('');
 
             for(let i = 0; i< resultObj.length; i++){
-                var experiencia = resultObj[i];
+                var xperiencia = resultObj[i];
 
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button></div>');
             }
         }
     });
-};
+}
+
+// function eliminar(){
+//     console.log("Entro");
+// }
+
+$('#experiencies').on("click", "#eliminar", function(){
+    if(confirm("¿Estás seguro de que deseas eliminar esta experiencia?")){
+        console.log("Dentro del if");
+        var id = $(this).attr("numID");
+        console.log(id);
+        $.ajax({
+            url: "php/eliminarExperiencia.php",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function(){
+                printExperiencias();
+            }
+        });
+    }
+});
+
+// $("#experiencies").onclick(function(){
+//     if(confirm("¿Estás seguro de que deseas eliminar esta experiencia?")){
+//         console.log("Dentro del if");
+//         var id = $(this).attr("id");
+//         console.log(id);
+//         $.ajax({
+//             url: "php/eliminarExperiencia.php",
+//             type: "post",
+//             data: {
+//                 id: id
+//             },
+//             success: function(){
+//                 printExperiencias();
+//             }
+//         });
+//     }
+// });
 
 //Botones
 $(document).ready(function(){

@@ -305,3 +305,9 @@ body {
     display: block;
     margin: auto;
 }
+
+#eliminar{
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+}
