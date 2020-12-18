@@ -112,7 +112,7 @@
       </div>
     </div>
     <!--  POPUP  DETAILS -->
-    <div class="overlay " id="overlayDetails">
+    <div class="overlay" id="overlayDetails">
       <div class="popup" id="popupDetails">
         <a href="#" id="btn-cerrar-popupDetails" class="btn-cerrar-popup">X</a>
         <h3>Details Experiencie</h3>

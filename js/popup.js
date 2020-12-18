@@ -46,6 +46,7 @@ btnCerrarPopupCrear.addEventListener('click', function(e){
 	popupCrear.classList.remove('active');
 });
 
+/*
 var btnDetails = document.getElementById('btn-verExperiencia5'),
 	overlayDetails = document.getElementById('overlayDetails'),
 	popupDetails = document.getElementById('popupDetails'),
@@ -61,3 +62,5 @@ btnCerrarPopupDetails.addEventListener('click', function(e){
 	overlayDetails.classList.remove('active');
 	popupDetails.classList.remove('active');
 });
+
+*/

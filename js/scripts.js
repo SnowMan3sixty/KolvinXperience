@@ -13,7 +13,7 @@ function printNoLogged() {
                 var experiencia = resultObj[i];
 
                 experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + 
-                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img><button id="btn-verExperiencia'+i+'" class="btn-popup">Examinar</button></div>');
+                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
 
                 activeShowMoreButton(i,experiencia['id']);
             }
@@ -56,14 +56,15 @@ function printExperiencias(){
         }
     });
 }
-function activeShowMoreButton(i,id){
-    console.log("activeShowMoreButton i=" + i + " id = " + id );
+function activeShowMoreButton(position,id){
+    console.log("activeShowMoreButton i=" + position + " id = " + id );
   /*  var nombreBoton = "btn-verExperiencia" + i;
     console.log(nombreBoton);
     document.getElementById(nombreBoton).addEventListener("click",function(){
         console.log("ENTRAS EN NUEVO LISTENER");
     });*/
-    $('#btn-verExperiencia5').click(function() {
+    $('#experiencies').on("click","#examinar",function() {
+        var id = $(this).attr("numID");
         $.ajax({
             url: "php/verExperiencia.php",
             type: "post",
@@ -83,10 +84,30 @@ function activeShowMoreButton(i,id){
                 document.getElementById("details_categoria").textContent = experiencia['id_cat'];
                 document.getElementById("details_likes").textContent = experiencia['valoracioPos'];
                 document.getElementById("details_dislikes").textContent = experiencia['valoriacioNeg'];             
-                
+
+                generarListenersDetails();
+               
             }
         });        
     });
+}
+function generarListenersDetails(){
+    //Los listeners van aqui porque el boton no esta de base en el codigo
+    var btnDetails = document.getElementById('eliminar'),
+        overlayDetails = document.getElementById('overlayDetails'),
+        popupDetails = document.getElementById('popupDetails'),
+        btnCerrarPopupDetails = document.getElementById('btn-cerrar-popupDetails');
+
+    btnDetails.addEventListener('click', function(){
+        overlayDetails.classList.add('active');
+        popupDetails.classList.add('active');
+    });
+
+    btnCerrarPopupDetails.addEventListener('click', function(e){
+        e.preventDefault();
+        overlayDetails.classList.remove('active');
+        popupDetails.classList.remove('active');
+    });                
 }
 
 $('#experiencies').on("click", "#eliminar", function(){
