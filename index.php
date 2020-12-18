@@ -41,7 +41,7 @@
 
     <div style="text-align: center;">
       <h1>Últimas Experiencias</h1>
-      <button id="btn-crear" class="btn-popup">Crear experiencia</button>
+      <button style="display: none;" id="btn-crear" class="btn-popup">Crear experiencia</button>
     </div>
     <div class="overlay" id="overlayCrear">
       <div class="popup" id="popupCrear">
