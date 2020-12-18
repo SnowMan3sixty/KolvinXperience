@@ -55,10 +55,6 @@ function printExperiencias(){
     });
 }
 
-// function eliminar(){
-//     console.log("Entro");
-// }
-
 $('#experiencies').on("click", "#eliminar", function(){
     if(confirm("¿Estás seguro de que deseas eliminar esta experiencia?")){
         console.log("Dentro del if");
@@ -76,24 +72,6 @@ $('#experiencies').on("click", "#eliminar", function(){
         });
     }
 });
-
-// $("#experiencies").onclick(function(){
-//     if(confirm("¿Estás seguro de que deseas eliminar esta experiencia?")){
-//         console.log("Dentro del if");
-//         var id = $(this).attr("id");
-//         console.log(id);
-//         $.ajax({
-//             url: "php/eliminarExperiencia.php",
-//             type: "post",
-//             data: {
-//                 id: id
-//             },
-//             success: function(){
-//                 printExperiencias();
-//             }
-//         });
-//     }
-// });
 
 //Botones
 $(document).ready(function(){
