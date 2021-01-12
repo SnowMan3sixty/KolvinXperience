@@ -58,11 +58,9 @@ function printExperiencias(){
 }
 function activeShowMoreButton(position,id){
     console.log("activeShowMoreButton i=" + position + " id = " + id );
-  /*  var nombreBoton = "btn-verExperiencia" + i;
+    var nombreBoton = "btn-verExperiencia" + position;
     console.log(nombreBoton);
-    document.getElementById(nombreBoton).addEventListener("click",function(){
-        console.log("ENTRAS EN NUEVO LISTENER");
-    });*/
+   
     $('#experiencies').on("click","#examinar",function() {
         var id = $(this).attr("numID");
         $.ajax({
@@ -83,32 +81,23 @@ function activeShowMoreButton(position,id){
                 document.getElementById("details_data").textContent = experiencia['fecha_publ'];
                 document.getElementById("details_categoria").textContent = experiencia['id_cat'];
                 document.getElementById("details_likes").textContent = experiencia['valoracioPos'];
-                document.getElementById("details_dislikes").textContent = experiencia['valoriacioNeg'];             
+                document.getElementById("details_dislikes").textContent = experiencia['valoriacioNeg'];           
 
-                generarListenersDetails();
-               
             }
         });        
     });
 }
-function generarListenersDetails(){
-    //Los listeners van aqui porque el boton no esta de base en el codigo
-    var btnDetails = document.getElementById('eliminar'),
-        overlayDetails = document.getElementById('overlayDetails'),
-        popupDetails = document.getElementById('popupDetails'),
-        btnCerrarPopupDetails = document.getElementById('btn-cerrar-popupDetails');
 
-    btnDetails.addEventListener('click', function(){
-        overlayDetails.classList.add('active');
-        popupDetails.classList.add('active');
-    });
+$('#experiencies').on("click", "#examinar", function(){
+    document.getElementById('overlayDetails').classList.add('active');
+    document.getElementById('popupDetails').classList.add('active');
 
-    btnCerrarPopupDetails.addEventListener('click', function(e){
+    document.getElementById('btn-cerrar-popupDetails').addEventListener('click', function(e){
         e.preventDefault();
-        overlayDetails.classList.remove('active');
-        popupDetails.classList.remove('active');
-    });                
-}
+        document.getElementById('overlayDetails').classList.remove('active');
+        document.getElementById('popupDetails').classList.remove('active');
+    });              
+});
 
 $('#experiencies').on("click", "#eliminar", function(){
     if(confirm("¿Estás seguro de que deseas eliminar esta experiencia?")){
@@ -127,6 +116,8 @@ $('#experiencies').on("click", "#eliminar", function(){
         });
     }
 });
+
+ 
 
 //Botones
 $(document).ready(function(){
