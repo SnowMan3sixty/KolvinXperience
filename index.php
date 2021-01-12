@@ -67,8 +67,8 @@
         <div id="formulario">
           <div class="contenedor-inputs">
             <form class="form-Editar">
-              <input id="tituloEditar" type="text" placeholder="Título" required>
-              <input id="contenidoEditar" type="text" placeholder="Contenido" required>
+              <input id ="edit_title" value=""/>
+              <input id="edit_descripcio" value=""/>
             </form>
             <p id="messageEditar" class= "message-error"></p>
           </div>

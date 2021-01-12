@@ -12,7 +12,10 @@ function printNoLogged() {
             for(let i = 0; i< resultObj.length; i++){
                 var experiencia = resultObj[i];
 
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img></div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + 
+                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
+
+                activeShowMoreButton(i,experiencia['id']);
             }
 
         }
@@ -48,12 +51,54 @@ function printExperiencias(){
 
             for(let i = 0; i< resultObj.length; i++){
                 var xperiencia = resultObj[i];
-
-                experienciesDiv.html(experienciesDiv.html() + `<div class="ultimesEx"><div class="titleExperiencia">${xperiencia['titol']}</div><img class="imgExperiencia" src="${xperiencia['imatge']}"></img><button numID="${xperiencia['id']}" id="eliminar">Eliminar</button><button numID="${xperiencia['id']}" id="editar">Editar</button></div>`);
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="'
+                 + xperiencia['id'] +'" id="editar">Editar</button></div>');
             }
         }
     });
 }
+function activeShowMoreButton(position,id){
+    console.log("activeShowMoreButton i=" + position + " id = " + id );
+    var nombreBoton = "btn-verExperiencia" + position;
+    console.log(nombreBoton);
+   
+    $('#experiencies').on("click","#examinar",function() {
+        var id = $(this).attr("numID");
+        $.ajax({
+            url: "php/verExperiencia.php",
+            type: "post",
+            data:{
+                id: id
+            },
+            success: function(result){
+
+                var resultObject = JSON.parse(result);
+                var experiencia = resultObject[0];
+                
+                document.getElementById("details_title").textContent = experiencia['titol'];
+                document.getElementById("details_image").textContent = experiencia['imatge'];
+                document.getElementById("details_descripcio").textContent = experiencia['contenido'];
+                document.getElementById("details_mapa").textContent = experiencia['coordenadas'];
+                document.getElementById("details_data").textContent = experiencia['fecha_publ'];
+                document.getElementById("details_categoria").textContent = experiencia['id_cat'];
+                document.getElementById("details_likes").textContent = experiencia['valoracioPos'];
+                document.getElementById("details_dislikes").textContent = experiencia['valoriacioNeg'];           
+
+            }
+        });        
+    });
+}
+
+$('#experiencies').on("click", "#examinar", function(){
+    document.getElementById('overlayDetails').classList.add('active');
+    document.getElementById('popupDetails').classList.add('active');
+
+    document.getElementById('btn-cerrar-popupDetails').addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('overlayDetails').classList.remove('active');
+        document.getElementById('popupDetails').classList.remove('active');
+    });              
+});
 
 $('#experiencies').on("click", "#eliminar", function(){
     if(confirm("¿Estás seguro de que deseas eliminar esta experiencia?")){
@@ -71,6 +116,37 @@ $('#experiencies').on("click", "#eliminar", function(){
             }
         });
     }
+});
+
+$('#experiencies').on("click", "#editar", function(){
+    document.getElementById('overlayEditar').classList.add('active');
+    document.getElementById('popupEditar').classList.add('active');
+
+    document.getElementById('btn-cerrar-popupEditar').addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('overlayEditar').classList.remove('active');
+        document.getElementById('popupDeEditar').classList.remove('active');
+    });            
+});
+
+$('#experiencies').on("click","#editar",function() {
+    var id = $(this).attr("numID");
+    $.ajax({
+        url: "php/verExperiencia.php",
+        type: "post",
+        data:{
+            id: id
+        },
+        success: function(result){
+
+            var resultObject = JSON.parse(result);
+            var experiencia = resultObject[0];
+            
+            document.getElementById("edit_title").textContent = experiencia['titol'];
+            document.getElementById("edit_descripcio").value = experiencia['contenido'];          
+
+        }
+    });        
 });
 
 //Botones
@@ -163,18 +239,5 @@ $(document).ready(function(){
         });
     });
 
-    $('#experiencies').on("click", "#editar", function(){
-        alert("Hola");
-
-        $('#overlayEditar').val().classList.add('active');
-        $('#popupEditar').val().classList.add('active');
-
-        var btnCerrarPopupEditar = $('#btn-cerrar-popupEditar').val();
-
-        btnCerrarPopupEditar.addEventListener('click', function(e){
-            e.preventDefault();
-            $('#overlayEditar').val().classList.remove('active');
-            $('#popupEditar').val().classList.remove('active');
-        });
-    });
+    
 });
