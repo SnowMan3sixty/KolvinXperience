@@ -49,7 +49,7 @@ function printExperiencias(){
             for(let i = 0; i< resultObj.length; i++){
                 var xperiencia = resultObj[i];
 
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button></div>');
+                experienciesDiv.html(experienciesDiv.html() + `<div class="ultimesEx"><div class="titleExperiencia">${xperiencia['titol']}</div><img class="imgExperiencia" src="${xperiencia['imatge']}"></img><button numID="${xperiencia['id']}" id="eliminar">Eliminar</button><button numID="${xperiencia['id']}" id="editar">Editar</button></div>`);
             }
         }
     });
@@ -160,6 +160,21 @@ $(document).ready(function(){
             success: function(){
                 printExperiencias();
             }
+        });
+    });
+
+    $('#experiencies').on("click", "#editar", function(){
+        alert("Hola");
+
+        $('#overlayEditar').val().classList.add('active');
+        $('#popupEditar').val().classList.add('active');
+
+        var btnCerrarPopupEditar = $('#btn-cerrar-popupEditar').val();
+
+        btnCerrarPopupEditar.addEventListener('click', function(e){
+            e.preventDefault();
+            $('#overlayEditar').val().classList.remove('active');
+            $('#popupEditar').val().classList.remove('active');
         });
     });
 });

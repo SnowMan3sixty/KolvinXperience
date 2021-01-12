@@ -311,3 +311,10 @@ body {
     color: white;
     border-radius: 10px;
 }
+
+#editar{
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    float: right;
+}
