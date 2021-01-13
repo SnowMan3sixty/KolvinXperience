@@ -1,67 +1,67 @@
-.content {
+.details_content {
     border: 2px solid black;
 }
 
-.editbutton {
+.details_editbutton {
     margin: 10px;
     height: 20px;
     width: 40px;
     border: 2px solid orange;
 }
 
-.title {
+.details_title {
     margin: 10px;
     height: 20px;
     border: 2px solid orange;
 }
 
-.image {
+.details_image {
     margin: 10px;
     height: 40px;
     border: 2px solid orange;
 }
 
-.descripcio {
+.details_descripcio {
     margin: 10px;
     height: 40px;
     border: 2px solid orange;
 }
 
-.mapa {
+.details_mapa {
     margin: 10px;
     height: 40px;
     border: 2px solid orange;
 }
 
-.descripciomap {
+.details_descripciomap {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.footerExperiencia {
+.details_footerExperiencia {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.data {
+.details_details_data {
     margin: 10px;
     height: 20px;
     border: 2px solid orange;
 }
 
-.categoria {
+.details_categoria {
     margin: 10px;
     height: 20px;
     border: 2px solid orange;
 }
 
-.likes {
+.details_likes {
     margin: 10px;
     height: 20px;
     border: 2px solid orange;
 }
 
-.dislikes {
+.details_dislikes {
     margin: 10px;
     height: 20px;
     border: 2px solid orange;
