@@ -219,8 +219,13 @@ $(document).ready(function(){
     $('#crearXP').click(function() {
         var titulo = $('#tituloCrear').val();
         var contenido = $('#contenidoCrear').val();
+        var imagen = $('#imagenCrear').val();
+        var coordenada = $('#coordenadaCrear').val();
+
         console.log(titulo);
         console.log(contenido);
+        console.log(imagen);
+        console.log(coordenada);
         $('#overlayCrear').hide();
         //AQUI
         $.ajax({
@@ -228,7 +233,9 @@ $(document).ready(function(){
             type: "post",
             data: {
                 titulo: titulo,
-                contenido: contenido
+                contenido: contenido,
+                imagen: imagen,
+                coordenada: coordenada
             },
             success: function(){
                 printExperiencias();

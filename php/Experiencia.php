@@ -44,8 +44,8 @@ class Experiencia extends DBAbstractModel {
         return $this->rows;
     }
 
-    public function crearExperiencia($titulo, $contenido){
-        $this->query = "INSERT INTO experiencia (titol, contingut, imatge) VALUES ('$titulo', '$contenido', 'https://picsum.photos/286/180?random')";
+    public function crearExperiencia($titulo, $contenido, $imagen, $coordenada){
+        $this->query = "INSERT INTO experiencia (titol, contingut, imatge, coordenadas) VALUES ('$titulo', '$contenido', '$imagen', '$coordenada')";
         $this->execute_single_query();
 
         return "OK";

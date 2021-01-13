@@ -104,6 +104,8 @@
             <form class="form-Crear">
               <input id="tituloCrear" type="text" placeholder="Título" required>
               <input id="contenidoCrear" type="text" placeholder="Contenido" required>
+              <input id="imagenCrear" type="text" placeholder="Pon la URL de tu imagen (286x180)" required>
+              <input id="coordenadaCrear" type="text" placeholder="Pon un iframe para las coordenadas" required>
             </form>
             <p id="messageCrear" class= "message-error"></p>
           </div>
