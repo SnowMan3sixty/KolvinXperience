@@ -60,23 +60,6 @@
       </div>
     </div>
 
-    <div class="overlay" id="overlayEditar">
-      <div class="popup" id="popupEditar">
-        <div><a href="#" id="btn-cerrar-popupEditar" class="btn-editar-popup">X</a></div>
-        <h3>Edita tu experiencia</h3>
-        <div id="formulario">
-          <div class="contenedor-inputs">
-            <form class="form-Editar">
-              <input id="tituloEditar" type="text" placeholder="Título" required>
-              <input id="contenidoEditar" type="text" placeholder="Contenido" required>
-            </form>
-            <p id="messageEditar" class= "message-error"></p>
-          </div>
-          <button id="editarXP" type="submit" class="btn-submit">Editar Experiencia</button>
-        </div>
-      </div>
-    </div>
-
     <div class="container margin-bottom-20">
         <div class="row d-flex flex-row-reverse bd-highlight col-12">
             <div id="afegir"></div>
