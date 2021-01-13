@@ -132,6 +132,26 @@
         </div>
       </div>
     </div>
+    <!--  POPUP UPDATE -->
+    <div class="overlay" id="overlayEditar">
+      <div class="popup" id="popupEditar">
+        <div><a href="#" id="btn-cerrar-popupEditar" class="btn-cerrar-popup">X</a></div>
+        <h3>Edita tu experiencia</h3>
+        <div id="formulario">
+          <div class="contenedor-inputs">
+            <form class="form-Editar">
+              <!-- <input id="tituloEditar" type="text" placeholder="Título" value="" required> -->
+              <input id="tituloEditar" value="" tituloID=""/>
+              <input id="contenidoEditar" value=""/>
+              <!-- <div id="contenidoEditar"></div> -->
+            </form>
+            <p id="messageEditar" class= "message-error"></p>
+          </div>
+          <button id="editarXP" type="submit" class="btn-submit">Editar Experiencia</button>
+        </div> 
+      </div>
+    </div>
+
     <!-- Footer -->
 
     <?php include('footer.php');?>
