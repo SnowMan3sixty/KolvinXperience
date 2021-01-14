@@ -78,10 +78,10 @@ function activeShowMoreButton(position,id){
                 document.getElementById("details_image").innerHTML = "<img src='" + experiencia['imatge'] + "'>";
                 document.getElementById("details_descripcio").textContent = experiencia['contingut'];
                 document.getElementById("details_mapa").innerHTML = experiencia['coordenadas'];
-                document.getElementById("details_data").textContent = experiencia['fecha_publ'];
-                document.getElementById("details_categoria").innerHTML = "Categoria: " + experiencia['id_cat'];
-                document.getElementById("details_likes").textContent = experiencia['valoracioPos'];
-                document.getElementById("details_dislikes").textContent = experiencia['valoracioNeg'];           
+                document.getElementById("details_data").innerHTML = "Data publicació: <br/>" + experiencia['fecha_publ'];
+                document.getElementById("details_categoria").innerHTML = "Categoria: <br/>" + experiencia['nom'];
+                document.getElementById("details_likes").innerHTML = '<i class="fas fa-thumbs-up"></i>' + experiencia['valoracioPos'];
+                document.getElementById("details_dislikes").innerHTML = '<i class="fas fa-thumbs-down"></i>' + experiencia['valoracioNeg'];           
 
             }
         });
