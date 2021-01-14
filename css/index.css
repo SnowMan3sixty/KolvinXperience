@@ -38,6 +38,9 @@ body {
 /* Fin Header */
 
 /* DETAILS POPUP */
+#popupDetails {
+    width: 80%;
+}
 
 #details_content {
     border: 2px solid black;
@@ -52,26 +55,27 @@ body {
 
 #details_title {
     margin: 10px;
-    height: 20px;
-    border: 2px solid orange;
+    border: 2px solid blue;
+    font-size: 40px;
+    font-weight: bolder;
+
 }
 
 #details_image {
     margin: 10px;
-    height: 40px;
     border: 2px solid orange;
 }
 
 #details_descripcio {
     margin: 10px;
-    height: 40px;
+    height: 100%;
     border: 2px solid orange;
 }
 
 #details_mapa {
     margin: 10px;
-    height: 40px;
     border: 2px solid orange;
+    height: 100%;
 }
 
 #details_descripciomap {
@@ -80,11 +84,12 @@ body {
 }
 
 #details_footerExperiencia {
+    margin: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 50% 50%;
 }
 
-#details_details_data {
+#details_data {
     margin: 10px;
     height: 20px;
     border: 2px solid orange;
@@ -92,7 +97,7 @@ body {
 
 #details_categoria {
     margin: 10px;
-    height: 20px;
+    height: 100%;
     border: 2px solid orange;
 }
 
@@ -386,7 +391,7 @@ body {
     margin: auto;
 }
 
-#eliminar{
+#eliminar {
     background-color: red;
     color: white;
     border-radius: 10px;
