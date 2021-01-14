@@ -51,7 +51,7 @@ function printExperiencias(){
 
             for(let i = 0; i< resultObj.length; i++){
                 var xperiencia = resultObj[i];
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button></div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
             }
         }
     });
@@ -84,7 +84,7 @@ function activeShowMoreButton(position,id){
                 document.getElementById("details_dislikes").textContent = experiencia['valoracioNeg'];           
 
             }
-        });        
+        });
     });
 }
 
@@ -117,7 +117,34 @@ $('#experiencies').on("click", "#eliminar", function(){
     }
 });
 
- 
+$('#experiencies').on("click", "#editar", function(){
+    document.getElementById('overlayEditar').classList.add('active');
+    document.getElementById('popupEditar').classList.add('active');
+
+    document.getElementById('btn-cerrar-popupEditar').addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('overlayEditar').classList.remove('active');
+        document.getElementById('popupEditar').classList.remove('active');
+    });
+    
+    var id = $(this).attr("numID");
+    $.ajax({
+        url: "php/verExperiencia.php",
+        type: "post",
+        data:{
+            id: id
+        },
+        success: function(result){
+
+            var resultObject = JSON.parse(result);
+            var experiencia = resultObject[0];
+            
+            document.getElementById("tituloEditar").setAttribute("value", experiencia['titol']);
+            document.getElementById("tituloEditar").setAttribute("tituloID", experiencia['id']);
+            document.getElementById("contenidoEditar").setAttribute("value", experiencia['contingut']);
+        }
+    });
+});
 
 //Botones
 $(document).ready(function(){
@@ -192,8 +219,13 @@ $(document).ready(function(){
     $('#crearXP').click(function() {
         var titulo = $('#tituloCrear').val();
         var contenido = $('#contenidoCrear').val();
+        var imagen = $('#imagenCrear').val();
+        var coordenada = $('#coordenadaCrear').val();
+
         console.log(titulo);
         console.log(contenido);
+        console.log(imagen);
+        console.log(coordenada);
         $('#overlayCrear').hide();
         //AQUI
         $.ajax({
@@ -201,7 +233,9 @@ $(document).ready(function(){
             type: "post",
             data: {
                 titulo: titulo,
-                contenido: contenido
+                contenido: contenido,
+                imagen: imagen,
+                coordenada: coordenada
             },
             success: function(){
                 printExperiencias();
@@ -209,5 +243,26 @@ $(document).ready(function(){
         });
     });
 
-    
+    $('#editarXP').click(function() {
+        var id = $('#tituloEditar').attr("tituloID");
+        var titulo = $('#tituloEditar').val();
+        var contenido = $('#contenidoEditar').val();
+        console.log(id);
+        console.log(titulo);
+        console.log(contenido);
+        $('#overlayEditar').hide();
+        //AQUI
+        $.ajax({
+            url: "php/editarExperiencia.php",
+            type: "post",
+            data: {
+                id: id,
+                titulo: titulo,
+                contenido: contenido
+            },
+            success: function(){
+                printExperiencias();
+            }
+        });
+    });    
 });
