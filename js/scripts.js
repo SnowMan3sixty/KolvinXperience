@@ -51,7 +51,7 @@ function printExperiencias(){
 
             for(let i = 0; i< resultObj.length; i++){
                 var xperiencia = resultObj[i];
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
             }
         }
     });
@@ -139,9 +139,11 @@ $('#experiencies').on("click", "#editar", function(){
             var resultObject = JSON.parse(result);
             var experiencia = resultObject[0];
             
-            document.getElementById("tituloEditar").setAttribute("value", experiencia['titol']);
             document.getElementById("tituloEditar").setAttribute("tituloID", experiencia['id']);
+            document.getElementById("tituloEditar").setAttribute("value", experiencia['titol']);
             document.getElementById("contenidoEditar").setAttribute("value", experiencia['contingut']);
+            document.getElementById("imagenEditar").setAttribute("value", experiencia['imatge']);
+            document.getElementById("coordenadaEditar").setAttribute("value", experiencia['coordenadas']);
         }
     });
 });
@@ -247,9 +249,13 @@ $(document).ready(function(){
         var id = $('#tituloEditar').attr("tituloID");
         var titulo = $('#tituloEditar').val();
         var contenido = $('#contenidoEditar').val();
+        var imagen = $('#imagenEditar').val();
+        var coordenada = $('#coordenadaEditar').val();
         console.log(id);
         console.log(titulo);
         console.log(contenido);
+        console.log(imagen);
+        console.log(coordenada);
         $('#overlayEditar').hide();
         //AQUI
         $.ajax({
@@ -258,7 +264,9 @@ $(document).ready(function(){
             data: {
                 id: id,
                 titulo: titulo,
-                contenido: contenido
+                contenido: contenido,
+                imagen: imagen,
+                coordenada: coordenada
             },
             success: function(){
                 printExperiencias();

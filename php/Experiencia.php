@@ -56,8 +56,8 @@ class Experiencia extends DBAbstractModel {
         $this->execute_single_query();
     }
     
-    public function editarExperiencia($id, $titulo, $contenido){
-        $this->query = "UPDATE experiencia SET titol = '$titulo', contingut = '$contenido' WHERE id = '$id'";
+    public function editarExperiencia($id, $titulo, $contenido, $imagen, $coordenada){
+        $this->query = "UPDATE experiencia SET titol = '$titulo', contingut = '$contenido', imatge = '$imagen', coordenadas = '$coordenada' WHERE id = '$id'";
         $this->execute_single_query();
 
         return "OK";

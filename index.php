@@ -104,8 +104,8 @@
             <form class="form-Crear">
               <input id="tituloCrear" type="text" placeholder="Título" required>
               <input id="contenidoCrear" type="text" placeholder="Contenido" required>
-              <input id="imagenCrear" type="text" placeholder="Pon la URL de tu imagen (286x180)" required>
-              <input id="coordenadaCrear" type="text" placeholder="Pon un iframe para las coordenadas" required>
+              <input id="imagenCrear" type="text" placeholder="URL de la imagen" required>
+              <input id="coordenadaCrear" type="text" placeholder="Iframe para las coordenadas" required>
             </form>
             <p id="messageCrear" class= "message-error"></p>
           </div>
@@ -145,6 +145,8 @@
               <!-- <input id="tituloEditar" type="text" placeholder="Título" value="" required> -->
               <input id="tituloEditar" value="" tituloID=""/>
               <input id="contenidoEditar" value=""/>
+              <input id="imagenEditar" value=""/>
+              <input id="coordenadaEditar" value=""/>
               <!-- <div id="contenidoEditar"></div> -->
             </form>
             <p id="messageEditar" class= "message-error"></p>
