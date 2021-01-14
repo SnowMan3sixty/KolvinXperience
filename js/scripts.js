@@ -79,7 +79,7 @@ function activeShowMoreButton(position,id){
                 document.getElementById("details_descripcio").textContent = experiencia['contingut'];
                 document.getElementById("details_mapa").innerHTML = experiencia['coordenadas'];
                 document.getElementById("details_data").textContent = experiencia['fecha_publ'];
-                document.getElementById("details_categoria").textContent = experiencia['id_cat'];
+                document.getElementById("details_categoria").innerHTML = "Categoria: " + experiencia['id_cat'];
                 document.getElementById("details_likes").textContent = experiencia['valoracioPos'];
                 document.getElementById("details_dislikes").textContent = experiencia['valoracioNeg'];           
 

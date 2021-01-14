@@ -38,12 +38,14 @@ body {
 /* Fin Header */
 
 /* DETAILS POPUP */
+
 #popupDetails {
-    width: 80%;
+    width: 50%;
 }
 
 #details_content {
     border: 2px solid black;
+    height: 80%;
 }
 
 #details_editbutton {
@@ -55,7 +57,6 @@ body {
 
 #details_title {
     margin: 10px;
-    border: 2px solid blue;
     font-size: 40px;
     font-weight: bolder;
 
@@ -68,19 +69,32 @@ body {
 
 #details_descripcio {
     margin: 10px;
-    height: 100%;
-    border: 2px solid orange;
+    background-color: lightgray;
+    text-align: justify;
+    padding: 5px;
+    border-radius: 1em;
 }
 
 #details_mapa {
     margin: 10px;
     border: 2px solid orange;
+    position: relative;
+    padding-bottom: 75%;
+    overflow: hidden;
+}
+
+#details_mapa iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
 }
 
 #details_descripciomap {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    height: 100%;
 }
 
 #details_footerExperiencia {
@@ -118,7 +132,7 @@ body {
 .header-left {
     text-align: left;
     /*transition: transform 2s;*/
-    animation: logo 5s infinite;
+    animation: logo 5s 1;
 }
 
 @keyframes logo {
@@ -397,7 +411,7 @@ body {
     border-radius: 10px;
 }
 
-#editar{
+#editar {
     background-color: blue;
     color: white;
     border-radius: 10px;
