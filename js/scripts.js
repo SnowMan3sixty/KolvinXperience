@@ -25,6 +25,7 @@ function printNoLogged() {
 function printLogged() {
     $('#bienvenida').hide();
     $('#overlay').hide();
+    $('#overlayreg').hide();
     $('#btn-logout').show();
     $('#btn-abrir-popup').hide();
     $('#btn-registrar').hide();
@@ -183,7 +184,7 @@ $(document).ready(function(){
                 if(resultObj.status == 'OK'){
                     printLogged();
                 }else{
-                    msg= "Invalid username and password";
+                    msg= "Usuario o contraseña incorrectos";
                 }
 
                 $("#message").html(msg);
@@ -194,23 +195,25 @@ $(document).ready(function(){
     $('#registrar').click(function() {
         var username = $('#usuarioreg').val();
         var password = $('#passreg').val();
+        var confirmpassword = $('#confirmpassreg').val();
         //AQUI
         $.ajax({
             url: "php/register.php",
             type: "post",
             data: {
                 username: username,
-                password: password
+                password: password,
+                confirmpassword: confirmpassword
             },
             success: function(result){
                 var msg= "";
     
                 if(result == 'OK'){
                     printLogged();
-                }else if(result == "EXISTEIX"){
-                    msg = "El nom d'usuari ja existeix";
+                }else if(result == "REGISTROINCORRECTO"){
+                    msg = "El nombre de usuario ya existe o las contraseñas no son iguales";
                 }else{
-                    msg= "Nom d'usuari o contrasenya incorrectes";
+                    msg= "Los campos no pueden estar vacíos";
                 }
     
                 $("#messageReg").html(msg);
