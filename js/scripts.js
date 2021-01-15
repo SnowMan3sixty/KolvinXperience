@@ -32,12 +32,40 @@ function printLogged() {
     $('#btn-crear').show();
 
     $.ajax({
-        url: "php/getExperiencies.php",
+        url: "php/getAllExperiencies.php",
         type: "post",
-        success: function(){
-            printExperiencias();
+        success: function(result){
+            var resultObj = JSON.parse(result);
+
+            var experienciesDiv = $('#experiencies');
+            experienciesDiv.html('');
+
+            for(let i = 0; i< resultObj.length; i++){
+                var xperiencia = resultObj[i];
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+            }
         }
     });
+    /*
+    $.ajax({
+        url: "php/getCategories.php",
+        type: "post",
+        success: function(result){
+            var resultObj = JSON.parse(result);
+
+            if(resultObj.status == 'OK'){
+                var html= '<select id="inputCat">'+
+                '<option value="todas">Todas</option>';
+                for(var i = 0;i < resultObj.datos.length; i++){
+                    var categoria = resultObj.datos[i];
+                    html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
+                }
+                html+='</select>';
+                $('#filtreCat').html(html);
+            }
+        }
+    });*/
+
 }
 
 function printExperiencias(){
@@ -277,8 +305,11 @@ $(document).ready(function(){
         console.log(contenido);
         console.log(imagen);
         console.log(coordenada);
-        $('#overlayEditar').hide();
+        document.getElementById("overlayEditar").classList.remove("active");
+        document.getElementById("popupEditar").classList.remove("active");
+
         //AQUI
+        
         $.ajax({
             url: "php/editarExperiencia.php",
             type: "post",

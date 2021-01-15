@@ -37,6 +37,16 @@ body {
 
 /* Fin Header */
 
+/* CSS ULTIMAS EX */
+
+.ultimesEx > img{
+    margin: 10px;
+    height: 70%;
+    width: 90%;
+    border-radius: 1em;
+}
+/* FIN CSS ULTIMAS EX*/
+
 /* DETAILS POPUP */
 
 #popupDetails {
@@ -66,11 +76,16 @@ body {
 }
 
 #details_image {
-    margin: 10px;
+    margin: 10px;   
     border: 2px solid black;
     border-radius: 1em;
     object-fit: cover;
     object-position: center center;
+}
+#details_image > img{
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
 }
 
 #details_descripcio {
@@ -147,7 +162,7 @@ i {
 .header-left {
     text-align: left;
     /*transition: transform 2s;*/
-    animation: logo 5s infinite;
+    animation: logo 5s 1;
 }
 
 @keyframes logo {
