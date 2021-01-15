@@ -25,6 +25,7 @@ function printNoLogged() {
 function printLogged() {
     $('#bienvenida').hide();
     $('#overlay').hide();
+    $('#overlayreg').hide();
     $('#btn-logout').show();
     $('#btn-abrir-popup').hide();
     $('#btn-registrar').hide();
@@ -100,7 +101,7 @@ function activeShowMoreButton(position,id){
                 document.getElementById("details_data").innerHTML = "Data publicació: <br/>" + experiencia['fecha_publ'];
                 document.getElementById("details_categoria").innerHTML = "Categoria: <br/>" + experiencia['nom'];
                 document.getElementById("details_likes").innerHTML = '<i class="fas fa-thumbs-up"></i>' + experiencia['valoracioPos'];
-                document.getElementById("details_dislikes").innerHTML = '<i class="fas fa-thumbs-down"></i>' + experiencia['valoracioNeg'];           
+                document.getElementById("details_dislikes").innerHTML = '<i class="fas fa-thumbs-down"></i>' + experiencia['valoracioNeg'];            
 
             }
         });
@@ -184,15 +185,6 @@ $(document).ready(function(){
         }
     });
 
-    $('#btn-abrir-popup').click(function(){
-        document.addEventListener('keypress',function(e){
-            if(e.key === 'Enter'){
-                $("#login").click();
-            }
-
-        });
-    });
-
     $('#login').click(function() {
         var username = $('#usuario').val();
         var password = $('#pass').val();
@@ -211,10 +203,48 @@ $(document).ready(function(){
                 if(resultObj.status == 'OK'){
                     printLogged();
                 }else{
-                    msg= "Invalid username and password";
+                    msg= "Usuario o contraseña incorrectos";
                 }
 
                 $("#message").html(msg);
+            }
+        });
+    });
+
+    $('#btn-abrir-popup').click(function(){
+        document.addEventListener('keypress',function(e){
+            if(e.key === 'Enter'){
+                $("#login").click();
+            }
+
+        });
+    });
+
+    $('#registrar').click(function() {
+        var username = $('#usuarioreg').val();
+        var password = $('#passreg').val();
+        var confirmpassword = $('#confirmpassreg').val();
+        //AQUI
+        $.ajax({
+            url: "php/register.php",
+            type: "post",
+            data: {
+                username: username,
+                password: password,
+                confirmpassword: confirmpassword
+            },
+            success: function(result){
+                var msg= "";
+    
+                if(result == 'OK'){
+                    printLogged();
+                }else if(result == "REGISTROINCORRECTO"){
+                    msg = "El nombre de usuario ya existe o las contraseñas no son iguales";
+                }else{
+                    msg= "Los campos no pueden estar vacíos";
+                }
+    
+                $("#messageReg").html(msg);
             }
         });
     });
@@ -224,34 +254,7 @@ $(document).ready(function(){
             if(e.key === 'Enter'){
                 $("#registrar").click();
             }
-            
-        });
-    });
 
-    $('#registrar').click(function() {
-        var username = $('#usuarioreg').val();
-        var password = $('#passreg').val();
-        //AQUI
-        $.ajax({
-            url: "php/register.php",
-            type: "post",
-            data: {
-                username: username,
-                password: password
-            },
-            success: function(result){
-                var msg= "";
-    
-                if(result == 'OK'){
-                    printLogged();
-                }else if(result == "EXISTEIX"){
-                    msg = "El nom d'usuari ja existeix";
-                }else{
-                    msg= "Nom d'usuari o contrasenya incorrectes";
-                }
-    
-                $("#messageReg").html(msg);
-            }
         });
     });
 

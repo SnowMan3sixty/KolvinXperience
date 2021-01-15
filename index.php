@@ -88,6 +88,7 @@
             <form class="form-reg">
               <input id="usuarioreg" type="text" placeholder="Usuario" required>
               <input id="passreg" type="password" placeholder="Contraseña" required>
+              <input id="confirmpassreg" type="password" placeholder="Confirmar contraseña" required>
             </form>
             <p id="messageReg" class= "message-error"></p>
           </div>
@@ -121,7 +122,7 @@
         <div id="details_content">
           <div id ="details_title"></div>
           <div id="details_descripcio"></div>
-          <div id="details_descripciomap">            
+          <div id="details_descripciomap">
             <div id="details_image"></div>
             <div id="details_mapa"></div>
           </div>
