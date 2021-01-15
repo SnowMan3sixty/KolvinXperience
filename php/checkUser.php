@@ -16,6 +16,10 @@ class Usuari extends DBAbstractModel {
             $this->$property = $value;
             session_start();
             $_SESSION['user']= $this->rows[0]['id'];
+            setcookie("user", $username);
+            if(!isset($_COOKIE["user"])) {
+                echo "Cookie named '" . "user" . "' is not set!";
+            }
             return $this->rows;
         }
         else{

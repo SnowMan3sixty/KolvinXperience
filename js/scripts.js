@@ -23,6 +23,7 @@ function printNoLogged() {
 }
 
 function printLogged() {
+    // getUserId()
     $('#bienvenida').hide();
     $('#overlay').hide();
     $('#btn-logout').show();
@@ -43,7 +44,6 @@ function printLogged() {
                 html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
             }
             html+='</select>';
-            alert(html);
             $('#filtreCat').html(html);
         }
     });
@@ -58,6 +58,13 @@ function printLogged() {
 
 }
 
+// function getUserId(){
+//     var id = document.cookie.match(new RegExp('(^| )' + "user" + '=([^;]+)'));
+//     if (match) return match[2];
+//         alert(id)
+// }
+
+
 function printExperiencias(){
     $.ajax({
         url: "php/getAllExperiencies.php",
@@ -70,6 +77,7 @@ function printExperiencias(){
 
             for(let i = 0; i< resultObj.length; i++){
                 var xperiencia = resultObj[i];
+                cards = '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>'
                 experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
             }
         }
@@ -198,7 +206,9 @@ $(document).ready(function(){
                 var resultObj = JSON.parse(result);
                 var msg= "";
                 console.log(resultObj);
+                alert(resultObj)
                 if(resultObj.status == 'OK'){
+                    document.cookie = "user="+username;
                     printLogged();
                 }else{
                     msg= "Invalid username and password";
