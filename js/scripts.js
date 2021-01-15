@@ -38,26 +38,7 @@ function printLogged() {
             printExperiencias();
         }
     });
-    $.ajax({
-        url: "php/getCategories.php",
-        type: "post",
-        success: function(result){
-            var resultObj = JSON.parse(result);
-
-            if(resultObj.status == 'OK'){
-                var html= '<select id="inputCat">'+
-                '<option value="todas">Todas</option>';
-                for(var i = 0;i < resultObj.datos.length; i++){
-                    var categoria = resultObj.datos[i];
-                    html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
-                }
-                html+='</select>';
-                $('#filtreCat').html(html);
-            }
-        }
-    });
 }
-
 
 function printExperiencias(){
     $.ajax({

@@ -33,7 +33,7 @@ class Experiencia extends DBAbstractModel {
     }
 
     public function selectOneExperiencia($id){
-        $this->query = "SELECT experiencia.* , categoria.nom FROM experiencia inner join categoria where experiencia.id_cat = categoria.id  and experiencia.id = $id ";
+        $this->query = "SELECT * FROM experiencia WHERE id='$id'";
         $this->get_results_from_query();
 
         if (count($this->rows)==1) {
