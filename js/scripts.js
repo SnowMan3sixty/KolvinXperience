@@ -165,6 +165,15 @@ $(document).ready(function(){
         }
     });
 
+    $('#btn-abrir-popup').click(function(){
+        document.addEventListener('keypress',function(e){
+            if(e.key === 'Enter'){
+                $("#login").click();
+            }
+
+        });
+    });
+
     $('#login').click(function() {
         var username = $('#usuario').val();
         var password = $('#pass').val();
@@ -188,6 +197,15 @@ $(document).ready(function(){
 
                 $("#message").html(msg);
             }
+        });
+    });
+
+    $('#btn-registrar').click(function(){
+        document.addEventListener('keypress',function(e){
+            if(e.key === 'Enter'){
+                $("#registrar").click();
+            }
+            
         });
     });
 
