@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="icon" href="icon.ico">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <title>KolvinExp</title>
 </head>
@@ -117,12 +118,11 @@
     <div class="overlay" id="overlayDetails">
       <div class="popup" id="popupDetails">
         <a href="#" id="btn-cerrar-popupDetails" class="btn-cerrar-popup">X</a>
-        <h3>Details Experiencie</h3>
         <div id="details_content">
           <div id ="details_title"></div>
-          <div id="details_image"></div>
-          <div id="details_descripciomap">
-            <div id="details_descripcio"></div>
+          <div id="details_descripcio"></div>
+          <div id="details_descripciomap">            
+            <div id="details_image"></div>
             <div id="details_mapa"></div>
           </div>
           <div id="details_footerExperiencia">
