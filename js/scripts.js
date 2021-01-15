@@ -57,8 +57,8 @@ function printLogged() {
             }
         }
     });*/
-}
 
+}
 
 function printExperiencias(){
     $.ajax({
