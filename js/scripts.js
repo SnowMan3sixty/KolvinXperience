@@ -170,6 +170,7 @@ $('#experiencies').on("click", "#editar", function(){
 
 //Botones
 $(document).ready(function(){
+    
     $.ajax({
         url: "php/checkLogged.php",
         type: "post",
