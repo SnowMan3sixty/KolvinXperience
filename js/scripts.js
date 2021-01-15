@@ -101,7 +101,7 @@ function activeShowMoreButton(position,id){
                 document.getElementById("details_data").innerHTML = "Data publicació: <br/>" + experiencia['fecha_publ'];
                 document.getElementById("details_categoria").innerHTML = "Categoria: <br/>" + experiencia['nom'];
                 document.getElementById("details_likes").innerHTML = '<i class="fas fa-thumbs-up"></i>' + experiencia['valoracioPos'];
-                document.getElementById("details_dislikes").innerHTML = '<i class="fas fa-thumbs-down"></i>' + experiencia['valoracioNeg'];           
+                document.getElementById("details_dislikes").innerHTML = '<i class="fas fa-thumbs-down"></i>' + experiencia['valoracioNeg'];            
 
             }
         });
@@ -185,73 +185,38 @@ $(document).ready(function(){
         }
     });
 
+    $('#login').click(function() {
+        var username = $('#usuario').val();
+        var password = $('#pass').val();
+        console.log(username,password);
+        $.ajax({
+            url: "php/login.php",
+            type: "post",
+            data: {
+                username: username,
+                password: password
+            },
+            success: function(result){
+                var resultObj = JSON.parse(result);
+                var msg= "";
+                console.log(resultObj);
+                if(resultObj.status == 'OK'){
+                    printLogged();
+                }else{
+                    msg= "Usuario o contraseña incorrectos";
+                }
+
+                $("#message").html(msg);
+            }
+        });
+    });
+
     $('#btn-abrir-popup').click(function(){
         document.addEventListener('keypress',function(e){
             if(e.key === 'Enter'){
                 $("#login").click();
             }
 
-        });
-    });
-
-    $('#login').click(function() {
-        var username = $('#usuario').val();
-        var password = $('#pass').val();
-        console.log(username,password);
-        $.ajax({
-            url: "php/login.php",
-            type: "post",
-            data: {
-                username: username,
-                password: password
-            },
-            success: function(result){
-                var resultObj = JSON.parse(result);
-                var msg= "";
-                console.log(resultObj);
-                if(resultObj.status == 'OK'){
-                    printLogged();
-                }else{
-                    msg= "Usuario o contraseña incorrectos";
-                }
-
-                $("#message").html(msg);
-            }
-        });
-    });
-
-    $('#login').click(function() {
-        var username = $('#usuario').val();
-        var password = $('#pass').val();
-        console.log(username,password);
-        $.ajax({
-            url: "php/login.php",
-            type: "post",
-            data: {
-                username: username,
-                password: password
-            },
-            success: function(result){
-                var resultObj = JSON.parse(result);
-                var msg= "";
-                console.log(resultObj);
-                if(resultObj.status == 'OK'){
-                    printLogged();
-                }else{
-                    msg= "Usuario o contraseña incorrectos";
-                }
-
-                $("#message").html(msg);
-            }
-        });
-    });
-
-    $('#btn-registrar').click(function(){
-        document.addEventListener('keypress',function(e){
-            if(e.key === 'Enter'){
-                $("#registrar").click();
-            }
-            
         });
     });
 
@@ -281,6 +246,15 @@ $(document).ready(function(){
     
                 $("#messageReg").html(msg);
             }
+        });
+    });
+
+    $('#btn-registrar').click(function(){
+        document.addEventListener('keypress',function(e){
+            if(e.key === 'Enter'){
+                $("#registrar").click();
+            }
+
         });
     });
 

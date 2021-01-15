@@ -122,7 +122,7 @@
         <div id="details_content">
           <div id ="details_title"></div>
           <div id="details_descripcio"></div>
-          <div id="details_descripciomap">            
+          <div id="details_descripciomap">
             <div id="details_image"></div>
             <div id="details_mapa"></div>
           </div>
