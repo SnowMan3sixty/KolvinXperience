@@ -30,8 +30,8 @@ body{
 #object_plane {
     transform: translate(400%, -100%);
     position: relative;
-    -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
-    animation: mymove 5s infinite;
+    -webkit-animation: mymove 5s 1; /* Safari 4.0 - 8.0 */
+    animation: mymove 5s 1;
   }
   
   /* Safari 4.0 - 8.0 */

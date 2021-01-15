@@ -147,7 +147,7 @@ i {
 .header-left {
     text-align: left;
     /*transition: transform 2s;*/
-    animation: logo 5s infinite;
+    animation: logo 5s 1;
 }
 
 @keyframes logo {
