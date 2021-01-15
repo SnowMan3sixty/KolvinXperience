@@ -36,16 +36,15 @@ function printLogged() {
         success: function(result){
             var resultObj = JSON.parse(result);
 
-            if(resultObj.status == 'OK'){
-                var html= '<select id="selectCat">'+
-                '<option value="todas">Todas</option>';
-                for(var i = 0;i < resultObj.datos.length; i++){
-                    var categoria = resultObj.datos[i];
-                    html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
-                }
-                html+='</select>';
-                $('#filtreCat').html(html);
+            var html= '<select id="selectCat">'+
+            '<option value="todas">Todas</option>';
+            for(var i = 0;i < resultObj.length; i++){
+                var categoria = resultObj[i];
+                html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
             }
+            html+='</select>';
+            alert(html);
+            $('#filtreCat').html(html);
         }
     });
 

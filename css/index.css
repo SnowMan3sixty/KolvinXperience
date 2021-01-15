@@ -15,6 +15,11 @@ body {
     /* width: 100%; */
 }
 
+#filtreCat{
+    height: 50px;
+    background-color: lightcoral;
+}
+
 #title {
     text-align: center;
     font-family: 'Oswald', Helvetica, sans-serif;

@@ -1,11 +1,11 @@
 <?php
 
-require_once('Experiencia.php');
+require_once('Categoria.php');
 
-$experiencia = new Experiencia();
+$categoria = new Categoria();
 
-$experiencies = $experiencia->selectUltimesExperiencies();
+$categoria = $categoria->selectTotesCategories();
 
-echo json_encode($experiencies);
+echo json_encode($categoria);
 
 ?>
