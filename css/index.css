@@ -420,13 +420,13 @@ i {
     margin: auto;
 }
 
-#eliminar {
+#eliminar{
     background-color: red;
     color: white;
     border-radius: 10px;
 }
 
-#editar {
+#editar{
     background-color: blue;
     color: white;
     border-radius: 10px;

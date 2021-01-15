@@ -38,7 +38,6 @@ function printLogged() {
             printExperiencias();
         }
     });
-
     $.ajax({
         url: "php/getCategories.php",
         type: "post",
@@ -58,6 +57,7 @@ function printLogged() {
         }
     });
 }
+
 
 function printExperiencias(){
     $.ajax({
@@ -170,7 +170,6 @@ $('#experiencies').on("click", "#editar", function(){
 
 //Botones
 $(document).ready(function(){
-    
     $.ajax({
         url: "php/checkLogged.php",
         type: "post",
