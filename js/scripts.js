@@ -13,7 +13,7 @@ function printNoLogged() {
                 var experiencia = resultObj[i];
 
                 experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + 
-                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
+                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'" width="286" height="180"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
 
                 activeShowMoreButton(i,experiencia['id']);
             }
@@ -32,10 +32,18 @@ function printLogged() {
     $('#btn-crear').show();
 
     $.ajax({
-        url: "php/getExperiencies.php",
+        url: "php/getAllExperiencies.php",
         type: "post",
-        success: function(){
-            printExperiencias();
+        success: function(result){
+            var resultObj = JSON.parse(result);
+
+            var experienciesDiv = $('#experiencies');
+            experienciesDiv.html('');
+
+            for(let i = 0; i< resultObj.length; i++){
+                var xperiencia = resultObj[i];
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+            }
         }
     });
     /*
@@ -297,8 +305,11 @@ $(document).ready(function(){
         console.log(contenido);
         console.log(imagen);
         console.log(coordenada);
-        $('#overlayEditar').hide();
+        document.getElementById("overlayEditar").classList.remove("active");
+        document.getElementById("popupEditar").classList.remove("active");
+
         //AQUI
+        
         $.ajax({
             url: "php/editarExperiencia.php",
             type: "post",
