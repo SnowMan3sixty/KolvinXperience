@@ -4,12 +4,13 @@ require_once('checkUser.php');
 
 $username =  $_REQUEST['username'];
 $password =  $_REQUEST['password'];
+$confirmpassword =  $_REQUEST['confirmpassword'];
 
-if ($username != "" && $password != "") {
+if ($username != "" && $password != "" && $confirmpassword != "") {
 
     $user = new Usuari();
 
-    if($user->existeixUsuari($username) == false){
+    if(($user->existeixUsuari($username) == false) && ($password == $confirmpassword)){
         $resultUser = $user->registrar($username, $password);
 
         if ($resultUser == false) {
@@ -19,7 +20,7 @@ if ($username != "" && $password != "") {
         }
 
     }else{
-        echo "EXISTEIX";
+        echo "REGISTROINCORRECTO";
     }
    
 } else {

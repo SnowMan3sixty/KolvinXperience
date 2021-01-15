@@ -88,6 +88,7 @@
             <form class="form-reg">
               <input id="usuarioreg" type="text" placeholder="Usuario" required>
               <input id="passreg" type="password" placeholder="Contraseña" required>
+              <input id="confirmpassreg" type="password" placeholder="Confirmar contraseña" required>
             </form>
             <p id="messageReg" class= "message-error"></p>
           </div>
