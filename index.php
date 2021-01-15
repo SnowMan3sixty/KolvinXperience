@@ -42,6 +42,7 @@
     <div style="text-align: center;">
       <h1>Últimas Experiencias</h1>
       <button style="display: none;" id="btn-crear" class="btn-popup">Crear experiencia</button>
+      <button style="display: none;" id="btn-personal" class="btn-popup">Ver mi información personal</button>
     </div>
     
 
@@ -68,7 +69,7 @@
         <div id="formulario">
           <div class="contenedor-inputs">
             <form class="form-login">
-              <input id="usuario" type="text" placeholder="Usuario" required>
+              <input id="usuario" type="text" placeholder="Usuario" usuarioID="" required>
               <input id="pass" type="password" placeholder="Contraseña" required>
             </form>
             <p id="message" class= "message-error"></p>
@@ -152,6 +153,27 @@
             <p id="messageEditar" class= "message-error"></p>
           </div>
           <button id="editarXP" type="submit" class="btn-submit">Editar Experiencia</button>
+        </div> 
+      </div>
+    </div>
+    <!--  POPUP PERSONAL -->
+    <div class="overlay" id="overlayPersonal">
+      <div class="popup" id="popupPersonal">
+        <div><a href="#" id="btn-cerrar-popupPersonal" class="btn-cerrar-popup">X</a></div>
+        <h3>Mi información personal</h3>
+        <div id="formulario">
+          <div class="contenedor-inputs">
+            <form class="form-Personal">
+              <!-- <input id="tituloEditar" type="text" placeholder="Título" value="" required> -->
+              <div>Tu ID de usuario es: <div id ="idUsuario"></div></div>
+              <div>Tu nombre de usuario es: <div id ="nombreUsuario"></div></div>
+              <!-- <div>¿Quieres editar tu nombre de usuario?</div>
+              <input id="editarNombreUsuario" value="" usuarioID=""/> -->
+              <!-- <div id="contenidoEditar"></div> -->
+            </form>
+            <p id="messagePersonal" class= "message-error"></p>
+          </div>
+          <button id="editarInformacionPersonal" type="submit" class="btn-submit">Editar Información Personal</button>
         </div> 
       </div>
     </div>

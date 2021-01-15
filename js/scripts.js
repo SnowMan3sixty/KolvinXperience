@@ -30,6 +30,7 @@ function printLogged() {
     $('#btn-abrir-popup').hide();
     $('#btn-registrar').hide();
     $('#btn-crear').show();
+    $('#btn-personal').show();
 
     $.ajax({
         url: "php/getAllExperiencies.php",
@@ -324,5 +325,34 @@ $(document).ready(function(){
                 printExperiencias();
             }
         });
-    });    
+    });
+
+    $('#btn-personal').click(function() {
+        document.getElementById('overlayPersonal').classList.add('active');
+        document.getElementById('popupPersonal').classList.add('active');
+
+        document.getElementById('btn-cerrar-popupPersonal').addEventListener('click', function(e){
+            e.preventDefault();
+            document.getElementById('overlayPersonal').classList.remove('active');
+            document.getElementById('popupPersonal').classList.remove('active');
+        });
+
+        var username = $('#usuario').val();
+
+        $.ajax({
+            url: "php/obtenerInfoUsuario.php",
+            type: "post",
+            data: {
+                username: username
+            },
+            success: function(result){
+
+                var resultObject = JSON.parse(result);
+                var experiencia = resultObject[0];
+                document.getElementById("idUsuario").textContent = experiencia['id'];
+                document.getElementById("nombreUsuario").textContent = experiencia['nom'];
+                
+            }
+        });
+    });
 });

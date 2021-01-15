@@ -42,6 +42,18 @@ class Usuari extends DBAbstractModel {
             return false;
         }
     }
+
+    public function obtenerInfoUsuario($username){
+        $this->query = "SELECT id, nom FROM usuari WHERE nom='$username'";
+        $this->get_results_from_query();
+
+        if (count($this->rows)==1) {
+            foreach ($this->rows[0] as $property => $value)
+            $this->$property = $value;
+        }
+
+        return $this->rows;
+    }
 }
 
 ?>
