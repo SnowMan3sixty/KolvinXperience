@@ -39,13 +39,13 @@ function printLogged() {
     });
 
     $.ajax({
-        url: "model/getCategories.php",
+        url: "php/getCategories.php",
         type: "post",
         success: function(result){
             var resultObj = JSON.parse(result);
 
             if(resultObj.status == 'OK'){
-                var html= '<select id="inputCat" class="form-control">'+
+                var html= '<select id="inputCat">'+
                 '<option value="todas">Todas</option>';
                 for(var i = 0;i < resultObj.datos.length; i++){
                     var categoria = resultObj.datos[i];
