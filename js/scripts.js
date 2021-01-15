@@ -13,7 +13,7 @@ function printNoLogged() {
                 var experiencia = resultObj[i];
 
                 experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + 
-                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
+                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'" width="286" height="180"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
 
                 activeShowMoreButton(i,experiencia['id']);
             }
