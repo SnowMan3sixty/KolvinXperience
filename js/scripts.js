@@ -38,6 +38,7 @@ function printLogged() {
             printExperiencias();
         }
     });
+    /*
     $.ajax({
         url: "php/getCategories.php",
         type: "post",
@@ -55,7 +56,7 @@ function printLogged() {
                 $('#filtreCat').html(html);
             }
         }
-    });
+    });*/
 }
 
 
