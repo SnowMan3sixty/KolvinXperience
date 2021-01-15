@@ -192,29 +192,12 @@ $(document).ready(function(){
         });
     });
 
-    $('#login').click(function() {
-        var username = $('#usuario').val();
-        var password = $('#pass').val();
-        console.log(username,password);
-        $.ajax({
-            url: "php/login.php",
-            type: "post",
-            data: {
-                username: username,
-                password: password
-            },
-            success: function(result){
-                var resultObj = JSON.parse(result);
-                var msg= "";
-                console.log(resultObj);
-                if(resultObj.status == 'OK'){
-                    printLogged();
-                }else{
-                    msg= "Usuario o contraseña incorrectos";
-                }
-
-                $("#message").html(msg);
+    $('#btn-abrir-popup').click(function(){
+        document.addEventListener('keypress',function(e){
+            if(e.key === 'Enter'){
+                $("#login").click();
             }
+
         });
     });
 
@@ -244,6 +227,15 @@ $(document).ready(function(){
     
                 $("#messageReg").html(msg);
             }
+        });
+    });
+
+    $('#btn-registrar').click(function(){
+        document.addEventListener('keypress',function(e){
+            if(e.key === 'Enter'){
+                $("#registrar").click();
+            }
+
         });
     });
 
