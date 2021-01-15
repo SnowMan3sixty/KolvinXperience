@@ -31,21 +31,13 @@ function printLogged() {
     $('#btn-crear').show();
 
     $.ajax({
-        url: "php/getExperiencies.php",
-        type: "post",
-        success: function(){
-            printExperiencias();
-        }
-    });
-
-    $.ajax({
-        url: "model/getCategories.php",
+        url: "php/getCategories.php",
         type: "post",
         success: function(result){
             var resultObj = JSON.parse(result);
 
             if(resultObj.status == 'OK'){
-                var html= '<select id="inputCat" class="form-control">'+
+                var html= '<select id="selectCat">'+
                 '<option value="todas">Todas</option>';
                 for(var i = 0;i < resultObj.datos.length; i++){
                     var categoria = resultObj.datos[i];
@@ -56,6 +48,15 @@ function printLogged() {
             }
         }
     });
+
+    $.ajax({
+        url: "php/getExperiencies.php",
+        type: "post",
+        success: function(){
+            printExperiencias();
+        }
+    });
+
 }
 
 function printExperiencias(){
@@ -75,6 +76,7 @@ function printExperiencias(){
         }
     });
 }
+
 function activeShowMoreButton(position,id){
     console.log("activeShowMoreButton i=" + position + " id = " + id );
     var nombreBoton = "btn-verExperiencia" + position;
