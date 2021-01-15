@@ -180,6 +180,7 @@ $('#experiencies').on("click", "#editar", function(){
 
 //Botones
 $(document).ready(function(){
+    
     $.ajax({
         url: "php/checkLogged.php",
         type: "post",
@@ -222,6 +223,7 @@ $(document).ready(function(){
     });
 
     $('#btn-abrir-popup').click(function(){
+        document.getElementById("usuario").focus();
         document.addEventListener('keypress',function(e){
             if(e.key === 'Enter'){
                 $("#login").click();
@@ -258,8 +260,11 @@ $(document).ready(function(){
             }
         });
     });
-
+    
     $('#btn-registrar').click(function(){
+
+        document.getElementById("usuarioreg").focus();
+
         document.addEventListener('keypress',function(e){
             if(e.key === 'Enter'){
                 $("#registrar").click();

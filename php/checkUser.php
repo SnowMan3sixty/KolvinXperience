@@ -23,6 +23,7 @@ class Usuari extends DBAbstractModel {
         }
     }
     public function registrar ($username, $password){
+        
         $this->query = "INSERT INTO usuari (nom, contrasenya) VALUES ('$username', '$password')";
         $this->execute_single_query();
 
