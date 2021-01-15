@@ -118,6 +118,7 @@ function activeShowMoreButton(position,id){
 }
 
 $('#experiencies').on("click", "#examinar", function(){
+    
     document.getElementById('overlayDetails').classList.add('active');
     document.getElementById('popupDetails').classList.add('active');
 
