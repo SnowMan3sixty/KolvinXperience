@@ -159,6 +159,10 @@ i {
     padding-right: 10px;
 }
 
+.btn-cerrar-popup{
+    margin-top: -5px;
+}
+
 /*FIN DETAILS POPUP*/
 
 .header-left {
@@ -471,9 +475,15 @@ i {
     float: right;
 }
 
-#reportar{
-    background-color:grey;
+#examinar {
+    background-color: blue;
     color: white;
     border-radius: 10px;
-    float: center;
+    text-align: center;
+}
+
+.fa-exclamation-triangle{
+    float: left;
+    margin-top: -7px;
+    color: red;
 }

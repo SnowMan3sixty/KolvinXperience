@@ -119,7 +119,7 @@
     <!--  POPUP  DETAILS -->
     <div class="overlay" id="overlayDetails">
       <div class="popup" id="popupDetails">
-        <a href="#" id="btn-cerrar-popupDetails" class="btn-cerrar-popup">X</a>
+        <i class="fas fa-exclamation-triangle" id="reportar"></i><a href="#" id="btn-cerrar-popupDetails" class="btn-cerrar-popup">X</a>
         <div id="details_content">
           <div id ="details_title"></div>
           <div id="details_descripcio"></div>
