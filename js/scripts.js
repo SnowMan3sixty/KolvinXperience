@@ -41,7 +41,11 @@ function printLogged() {
             var experienciesDiv = $('#experiencies');
             experienciesDiv.html('');
 
-            printExperiencias();
+            for(let i = 0; i< resultObj.length; i++){
+                var xperiencia = resultObj[i];
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+                activeShowMoreButton(i,xperiencia['id']);
+            }
         }
     });
     /*
@@ -83,6 +87,7 @@ function printExperiencias(){
         }
     });
 }
+
 function activeShowMoreButton(position,id){
     console.log("activeShowMoreButton i=" + position + " id = " + id );
     var nombreBoton = "btn-verExperiencia" + position;
@@ -102,6 +107,7 @@ function activeShowMoreButton(position,id){
                 var experiencia = resultObject[0];
                 
                 document.getElementById("details_title").textContent = experiencia['titol'];
+                document.getElementById("details_title").setAttribute("numID",experiencia['id']);
                 document.getElementById("details_image").innerHTML = "<img src='" + experiencia['imatge'] + "'>";
                 document.getElementById("details_descripcio").textContent = experiencia['contingut'];
                 document.getElementById("details_mapa").innerHTML = experiencia['coordenadas'];
@@ -113,9 +119,22 @@ function activeShowMoreButton(position,id){
             }
         });
     });
+    
+}
+
+function getUserNameCookie(){
+    var match = document.cookie.match(new RegExp('(^| )' + 'username' + '=([^;]+)'));
+    if (match) {
+        return match[2];
+    }
+    else{
+       return false;
+    }
+
 }
 
 $('#experiencies').on("click", "#examinar", function(){
+    
     document.getElementById('overlayDetails').classList.add('active');
     document.getElementById('popupDetails').classList.add('active');
 
@@ -177,6 +196,7 @@ $('#experiencies').on("click", "#editar", function(){
 
 //Botones
 $(document).ready(function(){
+    
     $.ajax({
         url: "php/checkLogged.php",
         type: "post",
@@ -189,6 +209,36 @@ $(document).ready(function(){
                 printNoLogged();
             }
             
+        }
+    });
+
+    $('#details_likes').click(function(){
+        var id = $('#details_title').attr("numID");
+        if(getUserNameCookie()){
+            console.log("estas loged");
+            $.ajax({
+                url: "php/giveLike.php",
+                type: "post",
+                data: {
+                    id : id
+                },
+                success: function(){
+                    console.log("se ha incrementado el like");
+                }
+            })
+        }
+        else{
+            alert("Tienes que iniciar sesión para votar.");
+        }
+       
+    });
+
+    $('#details_dislikes').click(function(){
+        if(getUserNameCookie()){
+
+        }
+        else{
+            alert("Tienes que iniciar sesión para votar.");
         }
     });
 
@@ -208,6 +258,7 @@ $(document).ready(function(){
                 var msg= "";
                 console.log(resultObj);
                 if(resultObj.status == 'OK'){
+                    document.cookie = "username="+username;
                     printLogged();
                 }else{
                     msg= "Usuario o contraseña incorrectos";
@@ -219,6 +270,7 @@ $(document).ready(function(){
     });
 
     $('#btn-abrir-popup').click(function(){
+        document.getElementById("usuario").focus();
         document.addEventListener('keypress',function(e){
             if(e.key === 'Enter'){
                 $("#login").click();
@@ -255,8 +307,11 @@ $(document).ready(function(){
             }
         });
     });
-
+    
     $('#btn-registrar').click(function(){
+
+        document.getElementById("usuarioreg").focus();
+
         document.addEventListener('keypress',function(e){
             if(e.key === 'Enter'){
                 $("#registrar").click();

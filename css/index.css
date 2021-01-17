@@ -39,12 +39,13 @@ body {
 
 /* CSS ULTIMAS EX */
 
-.ultimesEx > img{
+.ultimesEx>img {
     margin: 10px;
     height: 70%;
     width: 90%;
     border-radius: 1em;
 }
+
 /* FIN CSS ULTIMAS EX*/
 
 /* DETAILS POPUP */
@@ -76,13 +77,14 @@ body {
 }
 
 #details_image {
-    margin: 10px;   
+    margin: 10px;
     border: 2px solid black;
     border-radius: 1em;
     object-fit: cover;
     object-position: center center;
 }
-#details_image > img{
+
+#details_image>img {
     height: 100%;
     width: 100%;
     border-radius: 1em;
@@ -455,14 +457,14 @@ i {
     margin: auto;
 }
 
-#eliminar{
+#eliminar {
     background-color: red;
     color: white;
     border-radius: 10px;
     float: left;
 }
 
-#editar{
+#editar {
     background-color: blue;
     color: white;
     border-radius: 10px;
