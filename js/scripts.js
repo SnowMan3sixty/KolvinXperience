@@ -214,7 +214,6 @@ $(document).ready(function(){
     $('#details_likes').click(function(){
         var id = $('#details_title').attr("numID");
         if(getUserNameCookie()){
-            console.log("estas loged");
             $.ajax({
                 url: "php/giveLike.php",
                 type: "post",
@@ -222,9 +221,9 @@ $(document).ready(function(){
                     id : id
                 },
                 success: function(){
-                    console.log("se ha incrementado el like");
+                    document.getElementById("details_likes").innerHTML = '<i class="fas fa-thumbs-up"></i>' + (parseFloat(document.getElementById("details_likes").textContent) + 1);
                 }
-            })
+            });
         }
         else{
             alert("Tienes que iniciar sesión para votar.");
@@ -233,9 +232,18 @@ $(document).ready(function(){
     });
 
     $('#details_dislikes').click(function(){
+        var id = $('#details_title').attr("numID");
         if(getUserNameCookie()){
-
-        }
+            $.ajax({
+                url: "php/giveDislike.php",
+                type: "post",
+                data: {
+                    id : id
+                },
+                success: function(){
+                    document.getElementById("details_dislikes").innerHTML = '<i class="fas fa-thumbs-down"></i>' + (parseFloat(document.getElementById("details_dislikes").textContent) + 1);
+                }
+            });        }
         else{
             alert("Tienes que iniciar sesión para votar.");
         }
