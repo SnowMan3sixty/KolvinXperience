@@ -13,7 +13,7 @@ function printNoLogged() {
                 var experiencia = resultObj[i];
 
                 experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + 
-                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
+                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'" width="286" height="180"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
 
                 activeShowMoreButton(i,experiencia['id']);
             }
@@ -26,17 +26,23 @@ function printLogged() {
     // getUserId()
     $('#bienvenida').hide();
     $('#overlay').hide();
+    $('#overlayreg').hide();
     $('#btn-logout').show();
     $('#btn-abrir-popup').hide();
     $('#btn-registrar').hide();
     $('#btn-crear').show();
 
     $.ajax({
+<<<<<<< HEAD
         url: "php/getCategories.php",
+=======
+        url: "php/getAllExperiencies.php",
+>>>>>>> main
         type: "post",
         success: function(result){
             var resultObj = JSON.parse(result);
 
+<<<<<<< HEAD
             var html= '<select id="selectCat">'+
             '<option value="todas">Todas</option>';
             for(var i = 0;i < resultObj.length; i++){
@@ -45,16 +51,45 @@ function printLogged() {
             }
             html+='</select>';
             $('#filtreCat').html(html);
+=======
+            var experienciesDiv = $('#experiencies');
+            experienciesDiv.html('');
+
+            for(let i = 0; i< resultObj.length; i++){
+                var xperiencia = resultObj[i];
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+            }
+>>>>>>> main
         }
     });
-
+    /*
     $.ajax({
+<<<<<<< HEAD
         url: "php/getExperiencies.php",
         type: "post",
         success: function(){
             printExperiencias();
         }
     });
+=======
+        url: "php/getCategories.php",
+        type: "post",
+        success: function(result){
+            var resultObj = JSON.parse(result);
+
+            if(resultObj.status == 'OK'){
+                var html= '<select id="inputCat">'+
+                '<option value="todas">Todas</option>';
+                for(var i = 0;i < resultObj.datos.length; i++){
+                    var categoria = resultObj.datos[i];
+                    html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
+                }
+                html+='</select>';
+                $('#filtreCat').html(html);
+            }
+        }
+    });*/
+>>>>>>> main
 
 }
 
@@ -77,8 +112,12 @@ function printExperiencias(){
 
             for(let i = 0; i< resultObj.length; i++){
                 var xperiencia = resultObj[i];
+<<<<<<< HEAD
                 cards = '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>'
                 experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+=======
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+>>>>>>> main
             }
         }
     });
@@ -103,13 +142,13 @@ function activeShowMoreButton(position,id){
                 var experiencia = resultObject[0];
                 
                 document.getElementById("details_title").textContent = experiencia['titol'];
-                document.getElementById("details_image").textContent = experiencia['imatge'];
-                document.getElementById("details_descripcio").textContent = experiencia['contenido'];
-                document.getElementById("details_mapa").textContent = experiencia['coordenadas'];
-                document.getElementById("details_data").textContent = experiencia['fecha_publ'];
-                document.getElementById("details_categoria").textContent = experiencia['id_cat'];
-                document.getElementById("details_likes").textContent = experiencia['valoracioPos'];
-                document.getElementById("details_dislikes").textContent = experiencia['valoriacioNeg'];           
+                document.getElementById("details_image").innerHTML = "<img src='" + experiencia['imatge'] + "'>";
+                document.getElementById("details_descripcio").textContent = experiencia['contingut'];
+                document.getElementById("details_mapa").innerHTML = experiencia['coordenadas'];
+                document.getElementById("details_data").innerHTML = "Data publicació: <br/>" + experiencia['fecha_publ'];
+                document.getElementById("details_categoria").innerHTML = "Categoria: <br/>" + experiencia['nom'];
+                document.getElementById("details_likes").innerHTML = '<i class="fas fa-thumbs-up"></i>' + experiencia['valoracioPos'];
+                document.getElementById("details_dislikes").innerHTML = '<i class="fas fa-thumbs-down"></i>' + experiencia['valoracioNeg'];            
 
             }
         });
@@ -117,6 +156,7 @@ function activeShowMoreButton(position,id){
 }
 
 $('#experiencies').on("click", "#examinar", function(){
+    
     document.getElementById('overlayDetails').classList.add('active');
     document.getElementById('popupDetails').classList.add('active');
 
@@ -167,9 +207,11 @@ $('#experiencies').on("click", "#editar", function(){
             var resultObject = JSON.parse(result);
             var experiencia = resultObject[0];
             
-            document.getElementById("tituloEditar").setAttribute("value", experiencia['titol']);
             document.getElementById("tituloEditar").setAttribute("tituloID", experiencia['id']);
+            document.getElementById("tituloEditar").setAttribute("value", experiencia['titol']);
             document.getElementById("contenidoEditar").setAttribute("value", experiencia['contingut']);
+            document.getElementById("imagenEditar").setAttribute("value", experiencia['imatge']);
+            document.getElementById("coordenadaEditar").setAttribute("value", experiencia['coordenadas']);
         }
     });
 });
@@ -211,7 +253,7 @@ $(document).ready(function(){
                     document.cookie = "user="+username;
                     printLogged();
                 }else{
-                    msg= "Invalid username and password";
+                    msg= "Usuario o contraseña incorrectos";
                 }
 
                 $("#message").html(msg);
@@ -219,30 +261,50 @@ $(document).ready(function(){
         });
     });
 
+    $('#btn-abrir-popup').click(function(){
+        document.addEventListener('keypress',function(e){
+            if(e.key === 'Enter'){
+                $("#login").click();
+            }
+
+        });
+    });
+
     $('#registrar').click(function() {
         var username = $('#usuarioreg').val();
         var password = $('#passreg').val();
+        var confirmpassword = $('#confirmpassreg').val();
         //AQUI
         $.ajax({
             url: "php/register.php",
             type: "post",
             data: {
                 username: username,
-                password: password
+                password: password,
+                confirmpassword: confirmpassword
             },
             success: function(result){
                 var msg= "";
     
                 if(result == 'OK'){
                     printLogged();
-                }else if(result == "EXISTEIX"){
-                    msg = "El nom d'usuari ja existeix";
+                }else if(result == "REGISTROINCORRECTO"){
+                    msg = "El nombre de usuario ya existe o las contraseñas no son iguales";
                 }else{
-                    msg= "Nom d'usuari o contrasenya incorrectes";
+                    msg= "Los campos no pueden estar vacíos";
                 }
     
                 $("#messageReg").html(msg);
             }
+        });
+    });
+
+    $('#btn-registrar').click(function(){
+        document.addEventListener('keypress',function(e){
+            if(e.key === 'Enter'){
+                $("#registrar").click();
+            }
+
         });
     });
 
@@ -277,18 +339,27 @@ $(document).ready(function(){
         var id = $('#tituloEditar').attr("tituloID");
         var titulo = $('#tituloEditar').val();
         var contenido = $('#contenidoEditar').val();
+        var imagen = $('#imagenEditar').val();
+        var coordenada = $('#coordenadaEditar').val();
         console.log(id);
         console.log(titulo);
         console.log(contenido);
-        $('#overlayEditar').hide();
+        console.log(imagen);
+        console.log(coordenada);
+        document.getElementById("overlayEditar").classList.remove("active");
+        document.getElementById("popupEditar").classList.remove("active");
+
         //AQUI
+        
         $.ajax({
             url: "php/editarExperiencia.php",
             type: "post",
             data: {
                 id: id,
                 titulo: titulo,
-                contenido: contenido
+                contenido: contenido,
+                imagen: imagen,
+                coordenada: coordenada
             },
             success: function(){
                 printExperiencias();

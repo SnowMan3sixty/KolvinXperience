@@ -33,7 +33,7 @@ class Experiencia extends DBAbstractModel {
     }
 
     public function selectOneExperiencia($id){
-        $this->query = "SELECT * FROM experiencia WHERE id='$id'";
+        $this->query = "SELECT experiencia.* , categoria.nom FROM experiencia inner join categoria where experiencia.id_cat = categoria.id  and experiencia.id = $id ";
         $this->get_results_from_query();
 
         if (count($this->rows)==1) {
@@ -56,8 +56,8 @@ class Experiencia extends DBAbstractModel {
         $this->execute_single_query();
     }
     
-    public function editarExperiencia($id, $titulo, $contenido){
-        $this->query = "UPDATE experiencia SET titol = '$titulo', contingut = '$contenido' WHERE id = '$id'";
+    public function editarExperiencia($id, $titulo, $contenido, $imagen, $coordenada){
+        $this->query = "UPDATE experiencia SET titol = '$titulo', contingut = '$contenido', imatge = '$imagen', coordenadas = '$coordenada' WHERE id = '$id'";
         $this->execute_single_query();
 
         return "OK";

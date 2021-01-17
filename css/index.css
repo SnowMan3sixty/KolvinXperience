@@ -42,10 +42,28 @@ body {
 
 /* Fin Header */
 
+/* CSS ULTIMAS EX */
+
+.ultimesEx > img{
+    margin: 10px;
+    height: 70%;
+    width: 90%;
+    border-radius: 1em;
+}
+/* FIN CSS ULTIMAS EX*/
+
 /* DETAILS POPUP */
+
+#popupDetails {
+    width: 50%;
+    border-radius: 1em;
+}
+
 
 #details_content {
     border: 2px solid black;
+    border-radius: 1em;
+    height: 80%;
 }
 
 #details_editbutton {
@@ -57,60 +75,91 @@ body {
 
 #details_title {
     margin: 10px;
-    height: 20px;
-    border: 2px solid orange;
+    font-size: 40px;
+    font-weight: bolder;
+
 }
 
 #details_image {
-    margin: 10px;
-    height: 40px;
-    border: 2px solid orange;
+    margin: 10px;   
+    border: 2px solid black;
+    border-radius: 1em;
+    object-fit: cover;
+    object-position: center center;
+}
+#details_image > img{
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
 }
 
 #details_descripcio {
     margin: 10px;
-    height: 40px;
-    border: 2px solid orange;
+    background-color: lightgray;
+    text-align: justify;
+    padding: 5px;
+    border-radius: 1em;
 }
 
 #details_mapa {
     margin: 10px;
-    height: 40px;
-    border: 2px solid orange;
+    border: 2px solid black;
+    border-radius: 1em;
+    position: relative;
+    padding-bottom: 75%;
+    overflow: hidden;
+}
+
+#details_mapa iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #details_descripciomap {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    height: 100%;
 }
 
 #details_footerExperiencia {
+    margin: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 50% 50%;
 }
 
-#details_details_data {
+#details_data {
     margin: 10px;
-    height: 20px;
-    border: 2px solid orange;
+    font-weight: bolder;
+    border: 2px solid black;
+    border-radius: 1em;
 }
 
 #details_categoria {
     margin: 10px;
-    height: 20px;
-    border: 2px solid orange;
+    font-weight: bolder;
+    border: 2px solid black;
+    border-radius: 1em;
 }
 
 #details_likes {
     margin: 10px;
     height: 20px;
-    border: 2px solid orange;
+    background-color: lightgreen;
+    border-radius: 1em;
 }
 
 #details_dislikes {
     margin: 10px;
     height: 20px;
-    border: 2px solid orange;
+    background-color: #FF7171;
+    border-radius: 1em;
+}
+
+i {
+    padding-right: 10px;
 }
 
 /*FIN DETAILS POPUP*/
@@ -118,7 +167,7 @@ body {
 .header-left {
     text-align: left;
     /*transition: transform 2s;*/
-    animation: logo 5s infinite;
+    animation: logo 5s 1;
 }
 
 @keyframes logo {

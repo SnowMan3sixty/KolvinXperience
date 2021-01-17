@@ -21,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="icon" href="icon.ico">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
 
     <title>KolvinExp</title>
 </head>
@@ -87,6 +89,7 @@
             <form class="form-reg">
               <input id="usuarioreg" type="text" placeholder="Usuario" required>
               <input id="passreg" type="password" placeholder="Contraseña" required>
+              <input id="confirmpassreg" type="password" placeholder="Confirmar contraseña" required>
             </form>
             <p id="messageReg" class= "message-error"></p>
           </div>
@@ -104,8 +107,8 @@
             <form class="form-Crear">
               <input id="tituloCrear" type="text" placeholder="Título" required>
               <input id="contenidoCrear" type="text" placeholder="Contenido" required>
-              <input id="imagenCrear" type="text" placeholder="Pon la URL de tu imagen (286x180)" required>
-              <input id="coordenadaCrear" type="text" placeholder="Pon un iframe para las coordenadas" required>
+              <input id="imagenCrear" type="text" placeholder="URL de la imagen" required>
+              <input id="coordenadaCrear" type="text" placeholder="Iframe para las coordenadas" required>
             </form>
             <p id="messageCrear" class= "message-error"></p>
           </div>
@@ -117,12 +120,11 @@
     <div class="overlay" id="overlayDetails">
       <div class="popup" id="popupDetails">
         <a href="#" id="btn-cerrar-popupDetails" class="btn-cerrar-popup">X</a>
-        <h3>Details Experiencie</h3>
         <div id="details_content">
           <div id ="details_title"></div>
-          <div id="details_image"></div>
+          <div id="details_descripcio"></div>
           <div id="details_descripciomap">
-            <div id="details_descripcio"></div>
+            <div id="details_image"></div>
             <div id="details_mapa"></div>
           </div>
           <div id="details_footerExperiencia">
@@ -145,6 +147,8 @@
               <!-- <input id="tituloEditar" type="text" placeholder="Título" value="" required> -->
               <input id="tituloEditar" value="" tituloID=""/>
               <input id="contenidoEditar" value=""/>
+              <input id="imagenEditar" value=""/>
+              <input id="coordenadaEditar" value=""/>
               <!-- <div id="contenidoEditar"></div> -->
             </form>
             <p id="messageEditar" class= "message-error"></p>
