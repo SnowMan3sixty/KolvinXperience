@@ -41,11 +41,7 @@ function printLogged() {
             var experienciesDiv = $('#experiencies');
             experienciesDiv.html('');
 
-            for(let i = 0; i< resultObj.length; i++){
-                var xperiencia = resultObj[i];
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
-                activeShowMoreButton(i,xperiencia['id']);
-            }
+            printExperiencias();
         }
     });
     /*
@@ -82,7 +78,8 @@ function printExperiencias(){
 
             for(let i = 0; i< resultObj.length; i++){
                 var xperiencia = resultObj[i];
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="reportar">Reportar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+                activeShowMoreButton(i,xperiencia['id']);
             }
         }
     });
@@ -387,7 +384,7 @@ $(document).ready(function(){
             document.getElementById('popupPersonal').classList.remove('active');
         });
 
-        var username = $('#usuario').val();
+        var username = getUserNameCookie();
 
         $.ajax({
             url: "php/obtenerInfoUsuario.php",
@@ -407,7 +404,7 @@ $(document).ready(function(){
     });
 
     $('#editarInformacionPersonal').click(function() {
-        var username = $('#usuario').val();
+        var username = getUserNameCookie();
         var nombreUsuario = $('#editarNombreUsuario').val();
         document.getElementById("overlayPersonal").classList.remove("active");
         document.getElementById("popupPersonal").classList.remove("active");
