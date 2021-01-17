@@ -459,6 +459,7 @@ i {
     background-color: red;
     color: white;
     border-radius: 10px;
+    float: left;
 }
 
 #editar{
@@ -466,4 +467,11 @@ i {
     color: white;
     border-radius: 10px;
     float: right;
+}
+
+#reportar{
+    background-color:grey;
+    color: white;
+    border-radius: 10px;
+    float: center;
 }

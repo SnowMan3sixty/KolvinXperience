@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="icon" href="icon.ico">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 
     <title>KolvinExp</title>
 </head>
@@ -165,10 +166,10 @@
           <div class="contenedor-inputs">
             <form class="form-Personal">
               <!-- <input id="tituloEditar" type="text" placeholder="Título" value="" required> -->
-              <div>Tu ID de usuario es: <div id ="idUsuario"></div></div>
-              <div>Tu nombre de usuario es: <div id ="nombreUsuario"></div></div>
-              <!-- <div>¿Quieres editar tu nombre de usuario?</div>
-              <input id="editarNombreUsuario" value="" usuarioID=""/> -->
+              <div>Tu ID de usuario es: <spann id ="idUsuario"></span></div>
+              <div>Tu nombre de usuario es: <span id ="nombreUsuario"></span></div>
+              <div>¿Quieres editar tu nombre de usuario?</div>
+              <input id="editarNombreUsuario" value=""/>
               <!-- <div id="contenidoEditar"></div> -->
             </form>
             <p id="messagePersonal" class= "message-error"></p>

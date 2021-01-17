@@ -54,6 +54,13 @@ class Usuari extends DBAbstractModel {
 
         return $this->rows;
     }
+
+    public function editarInfoPersonal($username, $nombreUsuario){
+        $this->query = "UPDATE usuari SET nom = '$nombreUsuario' WHERE nom = '$username'";
+        $this->execute_single_query();
+
+        return "OK";
+    }
 }
 
 ?>
