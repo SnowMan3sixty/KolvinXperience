@@ -64,8 +64,16 @@ class Experiencia extends DBAbstractModel {
     }
 
     public function addLike($id){
-        $this->query = "UPDATE experiencia SET valoracioPos = valoracioPos+1 where id= $id";
-        ;
+        $this->query = "UPDATE experiencia SET valoracioPos = valoracioPos+1 where id= '$id'";
+        $this->excute_single_query();
+        
+        return "OK";
+    }
+    public function disLike($id){
+        $this->query = "UPDATE experiencia SET valoracioNeg = valoracioNeg+1 where id= '$id'";
+        $this->excute_single_query();
+        
+        return "OK";
     }
 }
 
