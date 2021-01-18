@@ -37,14 +37,15 @@ function printLogged() {
         success: function(result){
             var resultObj = JSON.parse(result);
 
-            var experienciesDiv = $('#experiencies');
-            experienciesDiv.html('');
+            printExperiencias(resultObj)
+            // var experienciesDiv = $('#experiencies');
+            // experienciesDiv.html('');
 
-            for(let i = 0; i< resultObj.length; i++){
-                var xperiencia = resultObj[i];
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
-                activeShowMoreButton(i,xperiencia['id']);
-            }
+            // for(let i = 0; i< resultObj.length; i++){
+            //     var xperiencia = resultObj[i];
+            //     experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+            //     activeShowMoreButton(i,xperiencia['id']);
+            // }
         }
     });
     
@@ -82,7 +83,8 @@ function printExperiencias(experiencies){
 
     for(let i = 0; i< experiencies.length; i++){
         var xperiencia = experiencies[i];
-        experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+        experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
+        activeShowMoreButton(i,xperiencia['id']);
     }
 }
 

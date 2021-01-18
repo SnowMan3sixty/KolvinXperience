@@ -416,13 +416,18 @@ i {
 /*Grid experiencies*/
 #experiencies {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
 }
 
+
 .ultimesEx {
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
     border: 2px black solid;
     margin: 5px;
-    padding: 5px;
+    padding: 2px;
+    background: whitesmoke;
 }
 
 .titleExperiencia {
@@ -438,14 +443,15 @@ i {
 }
 
 #eliminar {
-    background-color: red;
-    color: white;
+    padding-right: 0px;
+    align-self: center;
+    background-color:transparent;
+    color: red;
     border-radius: 10px;
 }
 
 #editar {
-    background-color: blue;
-    color: white;
+    color: blue;
     border-radius: 10px;
     float: right;
 }
