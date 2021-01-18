@@ -32,6 +32,7 @@ function printLogged() {
     $('#btn-crear').show();
     $('#btn-personal').show();
     $('#btn-reportadas').show();
+    $('#btn-borrador').show();
 
     $.ajax({
         url: "php/getAllExperiencies.php",
@@ -536,6 +537,45 @@ $(document).ready(function(){
 
                     activeShowMoreButton(i,experiencia['id']);
                 }
+            }
+        });
+    });
+
+    $('#btn-borrador').click(function() {
+        $.ajax({
+            url: "php/experienciasEnBorrador.php",
+            type: "post",
+            success: function(result){
+                var resultObj = JSON.parse(result);
+
+                var experienciesDiv = $('#experiencies');
+                experienciesDiv.html('');
+
+                for(let i = 0; i< resultObj.length; i++){
+                    var experiencia = resultObj[i];
+
+                    experienciesDiv.html(experienciesDiv.html() + '<div id="examinar" numID='+ experiencia['id'] +' class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'" width="286" height="180"></img><button numID="' + experiencia['id'] +'" id="publicar"><i class="fas fa-bullhorn"></i></button></div>');
+
+                    activeShowMoreButton(i,experiencia['id']);
+                }
+            }
+        });
+    });
+
+    $('#experiencies').on("click", "#publicar", function() {
+        var id = $(this).attr("numID");
+        console.log(id);
+
+        $.ajax({
+            url: "php/publicarExperiencia.php",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function(){
+                document.getElementById("overlayDetails").classList.remove("active");
+                document.getElementById("popupDetails").classList.remove("active");
+                printLogged();
             }
         });
     });

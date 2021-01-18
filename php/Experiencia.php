@@ -117,6 +117,24 @@ class Experiencia extends DBAbstractModel {
         return $this->rows;
     }
 
+    public function publicarExperiencia($id){
+        $this->query = "UPDATE experiencia SET estat = 'publicada' WHERE id = '$id'";
+        $this->execute_single_query();
+        return "OK";
+    }
+
+    public function experienciasEnBorrador() {
+        $this->query = "SELECT * FROM experiencia WHERE estat = 'esborrany'";
+        $this->get_results_from_query();
+
+        if (count($this->rows)==1) {
+            foreach ($this->rows[0] as $property => $value)
+            $this->$property = $value;
+        }
+
+        return $this->rows;
+    }
+
     public function addLike($id){
         $this->query = "UPDATE experiencia SET valoracioPos = valoracioPos+1 where id= '$id'";
         $this->execute_single_query();

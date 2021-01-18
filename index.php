@@ -45,6 +45,7 @@
       <button style="display: none;" id="btn-crear" class="btn-popup">Crear experiencia</button>
       <button style="display: none;" id="btn-personal" class="btn-popup">Ver mi información personal</button>
       <button style="display: none;" id="btn-reportadas" class="btn-popup">Ver experiencias reportadas</button>
+      <button style="display: none;" id="btn-borrador" class="btn-popup">Ver experiencias en borrador</button>
     </div>
     
 
