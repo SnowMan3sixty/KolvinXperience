@@ -204,24 +204,23 @@ $('#experiencies').on("click", "#editar", function(){
     });
 });
 
-// $('#reportar').click(function() {
-//     if(confirm("¿Estás seguro de que deseas reportar esta experiencia?")){
-//         alert("Experiencia reportada correctamente");
-//         var id = $(this).attr("numID");
-//         console.log(id);
+$('#reportar').click(function() {
+    if(confirm("¿Estás seguro de que deseas reportar esta experiencia?")){
+        var id = $(this).attr("numID");
+        console.log(id);
 
-//         $.ajax({
-//             url: "php/reportarExperiencia.php",
-//             type: "post",
-//             data: {
-//                 id: id
-//             },
-//             success: function(){
-//                 printExperiencias();
-//             }
-//         });
-//     }
-// });
+        $.ajax({
+            url: "php/reportarExperiencia.php",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function(){
+                printLogged();
+            }
+        });
+    }
+});
 
 //Botones
 $(document).ready(function(){
