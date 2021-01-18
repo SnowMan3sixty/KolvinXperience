@@ -5,7 +5,7 @@
 
     $experiencia = new Experiencia();
 
-    $experiencies = $experiencia->addLike($id);
+    $experiencies = $experiencia->disLike($id);
 
     echo "OK";
     

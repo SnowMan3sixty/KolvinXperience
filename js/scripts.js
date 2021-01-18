@@ -38,52 +38,57 @@ function printLogged() {
         success: function(result){
             var resultObj = JSON.parse(result);
 
-            var experienciesDiv = $('#experiencies');
-            experienciesDiv.html('');
+            printExperiencias(resultObj)
+            // var experienciesDiv = $('#experiencies');
+            // experienciesDiv.html('');
 
-            printExperiencias();
+            // for(let i = 0; i< resultObj.length; i++){
+            //     var xperiencia = resultObj[i];
+            //     experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+            //     activeShowMoreButton(i,xperiencia['id']);
+            // }
         }
     });
-    /*
+    
+    $.ajax({
+        url: "php/getCategories.php",
+        type: "post",
+        success: function(){
+            printFiltros();
+        }
+    });
+
+}
+
+function printFiltros(){
     $.ajax({
         url: "php/getCategories.php",
         type: "post",
         success: function(result){
             var resultObj = JSON.parse(result);
-
-            if(resultObj.status == 'OK'){
-                var html= '<select id="inputCat">'+
-                '<option value="todas">Todas</option>';
-                for(var i = 0;i < resultObj.datos.length; i++){
-                    var categoria = resultObj.datos[i];
-                    html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
-                }
-                html+='</select>';
-                $('#filtreCat').html(html);
+            var html= '<select id="inputCat">'+'<option value="todas">Categorias</option>';
+            for(var i = 0;i < resultObj.datos.length; i++){
+                var categoria = resultObj.datos[i];
+                html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
             }
-        }
-    });*/
-
-}
-
-function printExperiencias(){
-    $.ajax({
-        url: "php/getAllExperiencies.php",
-        type: "post",
-        success: function(result){
-            var resultObj = JSON.parse(result);
-
-            var experienciesDiv = $('#experiencies');
-            experienciesDiv.html('');
-
-            for(let i = 0; i< resultObj.length; i++){
-                var xperiencia = resultObj[i];
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
-                activeShowMoreButton(i,xperiencia['id']);
-            }
+            html+='</select>';
+            $('#filtreCat').html(html);
         }
     });
 }
+
+function printExperiencias(experiencies){
+
+    var experienciesDiv = $('#experiencies');
+    experienciesDiv.html('');
+
+    for(let i = 0; i< experiencies.length; i++){
+        var xperiencia = experiencies[i];
+        experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
+        activeShowMoreButton(i,xperiencia['id']);
+    }
+}
+
 
 function activeShowMoreButton(position,id){
     console.log("activeShowMoreButton i=" + position + " id = " + id );
@@ -212,7 +217,6 @@ $(document).ready(function(){
     $('#details_likes').click(function(){
         var id = $('#details_title').attr("numID");
         if(getUserNameCookie()){
-            console.log("estas loged");
             $.ajax({
                 url: "php/giveLike.php",
                 type: "post",
@@ -220,9 +224,9 @@ $(document).ready(function(){
                     id : id
                 },
                 success: function(){
-                    console.log("se ha incrementado el like");
+                    document.getElementById("details_likes").innerHTML = '<i class="fas fa-thumbs-up"></i>' + (parseFloat(document.getElementById("details_likes").textContent) + 1);
                 }
-            })
+            });
         }
         else{
             alert("Tienes que iniciar sesión para votar.");
@@ -231,9 +235,18 @@ $(document).ready(function(){
     });
 
     $('#details_dislikes').click(function(){
+        var id = $('#details_title').attr("numID");
         if(getUserNameCookie()){
-
-        }
+            $.ajax({
+                url: "php/giveDislike.php",
+                type: "post",
+                data: {
+                    id : id
+                },
+                success: function(){
+                    document.getElementById("details_dislikes").innerHTML = '<i class="fas fa-thumbs-down"></i>' + (parseFloat(document.getElementById("details_dislikes").textContent) + 1);
+                }
+            });        }
         else{
             alert("Tienes que iniciar sesión para votar.");
         }
@@ -422,3 +435,18 @@ $(document).ready(function(){
         });
     });
 });
+
+function filtreExperiencia(categoria){
+    $.ajax({
+        url: "php/filtrarExperiencies.php",
+        type: "post",
+        data: {
+            categoria : categoria
+        },
+        success: function(result){
+            var resultObj = JSON.parse(result);
+
+            printExperiencias(resultObj)
+        }
+    });
+}

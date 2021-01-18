@@ -6,6 +6,8 @@ $username =  $_REQUEST['username'];
 $password =  $_REQUEST['password'];
 
 if ($username!= "" && $password!= ""){
+    $password = sha1($password);
+
 
     $user = new Usuari();
 
