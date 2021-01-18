@@ -445,7 +445,7 @@ i {
 #eliminar {
     padding-right: 0px;
     align-self: center;
-    background-color:transparent;
+    background-color: transparent;
     color: red;
     border-radius: 10px;
 }
@@ -454,11 +454,4 @@ i {
     color: blue;
     border-radius: 10px;
     float: right;
-}
-
-#examinar {
-    background-color: blue;
-    color: white;
-    border-radius: 10px;
-    float: center;
 }

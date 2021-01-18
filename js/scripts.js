@@ -83,7 +83,7 @@ function printExperiencias(experiencies){
 
     for(let i = 0; i< experiencies.length; i++){
         var xperiencia = experiencies[i];
-        experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
+        experienciesDiv.html(experienciesDiv.html() + '<div id="examinar" numID="'+ xperiencia['id'] +'" class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
         activeShowMoreButton(i,xperiencia['id']);
     }
 }
