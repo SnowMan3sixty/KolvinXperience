@@ -31,6 +31,7 @@ function printLogged() {
     $('#btn-registrar').hide();
     $('#btn-crear').show();
     $('#btn-personal').show();
+    $('#btn-reportadas').show();
 
     $.ajax({
         url: "php/getAllExperiencies.php",
@@ -202,24 +203,6 @@ $('#experiencies').on("click", "#editar", function(){
             document.getElementById("coordenadaEditar").setAttribute("value", experiencia['coordenadas']);
         }
     });
-});
-
-$('#reportar').click(function() {
-    if(confirm("¿Estás seguro de que deseas reportar esta experiencia?")){
-        var id = $(this).attr("numID");
-        console.log(id);
-
-        $.ajax({
-            url: "php/reportarExperiencia.php",
-            type: "post",
-            data: {
-                id: id
-            },
-            success: function(){
-                printLogged();
-            }
-        });
-    }
 });
 
 //Botones
@@ -460,7 +443,8 @@ $(document).ready(function(){
                 nombreUsuario: nombreUsuario
             },
             success: function(){
-                printExperiencias();
+                document.cookie = "username="+nombreUsuario;
+                printLogged();
             }
         });
     });
@@ -469,6 +453,50 @@ $(document).ready(function(){
         var categoria= $(this).val();
         filtreExperiencia(categoria);
     }));
+
+    $('#reportar').click(function() {
+        if(getUserNameCookie()){
+            document.getElementById("overlayDetails").classList.remove("active");
+            document.getElementById("popupDetails").classList.remove("active");
+            var id = $('#details_title').attr("numID");
+            console.log(id);
+    
+            $.ajax({
+                url: "php/reportarExperiencia.php",
+                type: "post",
+                data: {
+                    id: id
+                },
+                success: function(){
+                    printLogged();
+                }
+            });
+        }else{
+            alert("Tienes que iniciar sesión para reportar.");
+        }
+    });
+
+    $('#btn-reportadas').click(function() {
+        $.ajax({
+            url: "php/experienciasReportadas.php",
+            type: "post",
+            success: function(result){
+                var resultObj = JSON.parse(result);
+
+                var experienciesDiv = $('#experiencies');
+                experienciesDiv.html('');
+
+                for(let i = 0; i< resultObj.length; i++){
+                    var experiencia = resultObj[i];
+
+                    experienciesDiv.html(experienciesDiv.html() + '<div id="examinar" numID='+ experiencia['id'] +' class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'" width="286" height="180"></img></div>');
+
+                    activeShowMoreButton(i,experiencia['id']);
+                }
+            }
+        });
+    });
+
 });
 
 function filtreExperiencia(categoria){

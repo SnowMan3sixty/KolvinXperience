@@ -30,7 +30,7 @@
     <?php include('header.php');?>
 
     <div class="navbar" id="navbar">
-        <a id="logo" href = "#top"><img src="./img/logo.png" alt="logo" width="100" height="70"></a>
+        <a id="logo" href = "index.php"><img src="./img/logo.png" alt="logo" width="100" height="70"></a>
         <!-- <img id="logo" src="./img/logo.png"> -->
         <div class="col-7 col-lg-4" id="headerRight" style="margin-top: 5px;">
             <button id="btn-abrir-popup" class="btn-popup">Ir al Login</button>
@@ -44,6 +44,7 @@
       <h1>Últimas Experiencias</h1>
       <button style="display: none;" id="btn-crear" class="btn-popup">Crear experiencia</button>
       <button style="display: none;" id="btn-personal" class="btn-popup">Ver mi información personal</button>
+      <button style="display: none;" id="btn-reportadas" class="btn-popup">Ver experiencias reportadas</button>
     </div>
     
 

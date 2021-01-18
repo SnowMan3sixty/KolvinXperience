@@ -50,6 +50,9 @@ class Experiencia extends DBAbstractModel {
         if($categoria != "todas"){
             $where = " WHERE estat = 'publicada' and id_cat = $categoria";
         }
+        else{
+            $where = " WHERE estat = 'publicada'";
+        }
         $finalquery = $query . $where;
         
         $this->query = $finalquery;
@@ -83,10 +86,35 @@ class Experiencia extends DBAbstractModel {
     }
 
     public function reportarExperiencia($id){
-        $this->query = "UPDATE experiencia SET estat = 'rebutjada' WHERE id = '$id'";
-        $this->execute_single_query();
+        $this->query = "SELECT estat FROM experiencia WHERE id = '$id'";
+        $this->get_results_from_query();
 
-        return "OK";
+        if (count($this->rows)==1) {
+            foreach ($this->rows[0] as $property => $value)
+            $this->$property = $value;
+        }
+
+        if($value == "publicada"){
+            $this->query = "UPDATE experiencia SET estat = 'rebutjada' WHERE id = '$id'";
+            $this->execute_single_query();
+            return "OK";
+        }else if($value == "rebutjada"){
+            $this->query = "UPDATE experiencia SET estat = 'publicada' WHERE id = '$id'";
+            $this->execute_single_query();
+            return "OK";
+        }
+    }
+
+    public function experienciasReportadas() {
+        $this->query = "SELECT * FROM experiencia WHERE estat = 'rebutjada' ORDER BY fecha_publ";
+        $this->get_results_from_query();
+
+        if (count($this->rows)==1) {
+            foreach ($this->rows[0] as $property => $value)
+            $this->$property = $value;
+        }
+
+        return $this->rows;
     }
 
     public function addLike($id){

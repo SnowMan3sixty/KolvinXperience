@@ -297,6 +297,26 @@ i {
     background: rgba(94, 125, 227, .9);
 }
 
+#btn-reportadas {
+    padding: 0 20px;
+    margin-bottom: 5px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background: #5E7DE3;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+#btn-reportadas:hover {
+    background: rgba(94, 125, 227, .9);
+}
+
 .overlay {
     background: rgba(0, 0, 0, .3);
     position: fixed;
