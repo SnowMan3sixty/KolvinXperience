@@ -12,8 +12,8 @@ function printNoLogged() {
             for(let i = 0; i< resultObj.length; i++){
                 var experiencia = resultObj[i];
 
-                experienciesDiv.html(experienciesDiv.html() + '<div id="experiencia'+i+'" class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + 
-                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'" width="286" height="180"></img><button id=examinar numID="' + experiencia['id'] + '" class="btn-popup">Examinar</button></div>');
+                experienciesDiv.html(experienciesDiv.html() + '<div id="examinar" numID='+ experiencia['id'] +' class="ultimesEx"><div class="titleExperiencia">' + experiencia['titol'] + 
+                '</div><img class="imgExperiencia" src="' + experiencia['imatge'] +'" width="286" height="180"></img></div>');
 
                 activeShowMoreButton(i,experiencia['id']);
             }
@@ -39,14 +39,6 @@ function printLogged() {
             var resultObj = JSON.parse(result);
 
             printExperiencias(resultObj)
-            // var experienciesDiv = $('#experiencies');
-            // experienciesDiv.html('');
-
-            // for(let i = 0; i< resultObj.length; i++){
-            //     var xperiencia = resultObj[i];
-            //     experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button id=examinar numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
-            //     activeShowMoreButton(i,xperiencia['id']);
-            // }
         }
     });
     
@@ -84,7 +76,7 @@ function printExperiencias(experiencies){
 
     for(let i = 0; i< experiencies.length; i++){
         var xperiencia = experiencies[i];
-        experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] + '" class="btn-popup" id="examinar">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
+        experienciesDiv.html(experienciesDiv.html() + '<div id="examinar" numID="'+ xperiencia['id'] +'" class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
         activeShowMoreButton(i,xperiencia['id']);
     }
 }
@@ -134,6 +126,22 @@ function getUserNameCookie(){
     }
 
 }
+function getUserNameID(username){
+    var userId;
+
+    $.ajax({
+        url: "php/getUserID.php",
+        type: "post",
+        data: {
+            user: username
+        },
+        success: function(result){
+            var resultObj = JSON.parse(result);
+            var userId = resultObj[0]['id'];
+            document.cookie = "userid=" + userId;
+        }        
+    });
+}
 
 $('#experiencies').on("click", "#examinar", function(){
     
@@ -159,7 +167,7 @@ $('#experiencies').on("click", "#eliminar", function(){
                 id: id
             },
             success: function(){
-                printExperiencias();
+                printLogged();
             }
         });
     }
@@ -288,6 +296,7 @@ $(document).ready(function(){
                 console.log(resultObj);
                 if(resultObj.status == 'OK'){
                     document.cookie = "username="+username;
+                    getUserNameID(username);
                     printLogged();
                 }else{
                     msg= "Usuario o contraseña incorrectos";
@@ -354,12 +363,14 @@ $(document).ready(function(){
         var contenido = $('#contenidoCrear').val();
         var imagen = $('#imagenCrear').val();
         var coordenada = $('#coordenadaCrear').val();
+        var userId = document.cookie.match(new RegExp('(^| )' + 'userid' + '=([^;]+)'));
 
         console.log(titulo);
         console.log(contenido);
         console.log(imagen);
         console.log(coordenada);
-        $('#overlayCrear').hide();
+        document.getElementById("overlayCrear").classList.remove("active");
+        document.getElementById("popupCrear").classList.remove("active");       
         //AQUI
         $.ajax({
             url: "php/crearExperiencia.php",
@@ -368,10 +379,11 @@ $(document).ready(function(){
                 titulo: titulo,
                 contenido: contenido,
                 imagen: imagen,
-                coordenada: coordenada
+                coordenada: coordenada,
+                user: userId[2]
             },
             success: function(){
-                printExperiencias();
+                printLogged();
             }
         });
     });
@@ -401,7 +413,7 @@ $(document).ready(function(){
                 coordenada: coordenada
             },
             success: function(){
-                printExperiencias();
+                printLogged();
             }
         });
     });

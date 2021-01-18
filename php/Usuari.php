@@ -56,11 +56,35 @@ class Usuari extends DBAbstractModel {
         return $this->rows;
     }
 
+    public function selectTotsUsuaris() {
+        $this->query = "SELECT id, nom FROM usuari";
+        $this->get_results_from_query();
+
+        if (count($this->rows)==1) {
+            foreach ($this->rows[0] as $property => $value)
+            $this->$property = $value;
+        }
+
+        return $this->rows;
+    }
+
     public function editarInfoPersonal($username, $nombreUsuario){
         $this->query = "UPDATE usuari SET nom = '$nombreUsuario' WHERE nom = '$username'";
         $this->execute_single_query();
 
         return "OK";
+    }
+
+    public function selectIDFromUser($username){
+        $this->query = "SELECT id FROM usuari WHERE nom='$username'";
+        $this->get_results_from_query();
+
+        if (count($this->rows)==1) {
+            foreach ($this->rows[0] as $property => $value)
+            $this->$property = $value;
+        }
+
+        return $this->rows;
     }
 }
 
