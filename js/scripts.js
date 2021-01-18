@@ -149,10 +149,10 @@ $('#experiencies').on("click", "#examinar", function(){
         document.getElementById('overlayDetails').classList.remove('active');
         document.getElementById('popupDetails').classList.remove('active');
     }
-   /* else if(document.getElementById('overlayEliminar').classList.contains('active')){        
+    else if(document.getElementById('overlayEliminar').classList.contains('active')){        
         document.getElementById('overlayDetails').classList.remove('active');
         document.getElementById('popupDetails').classList.remove('active');
-    }*/
+    }
     else{
         document.getElementById('overlayDetails').classList.add('active');
         document.getElementById('popupDetails').classList.add('active');
@@ -166,21 +166,30 @@ $('#experiencies').on("click", "#examinar", function(){
 });
 
 $('#experiencies').on("click", "#eliminar", function(){
-    if(confirm("¿Estás seguro de que deseas eliminar esta experiencia?")){
-        console.log("Dentro del if");
-        var id = $(this).attr("numID");
-        console.log(id);
-        $.ajax({
-            url: "php/eliminarExperiencia.php",
-            type: "post",
-            data: {
-                id: id
-            },
-            success: function(){
-                printLogged();
-            }
-        });
-    }
+    document.getElementById('overlayEliminar').classList.add('active');
+    document.getElementById('popupEliminar').classList.add('active');
+    document.getElementById('btn-cerrar-popupEliminar').addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('overlayEliminar').classList.remove('active');
+        document.getElementById('popupEliminar').classList.remove('active');
+    });
+
+    var id = $(this).attr("numID");
+    $.ajax({
+        url: "php/verExperiencia.php",
+        type: "post",
+        data:{
+            id: id
+        },
+        success: function(result){
+
+            var resultObject = JSON.parse(result);
+            var experiencia = resultObject[0];
+            
+            document.getElementById("eliminarXP").setAttribute("eliminarID", experiencia['id']);
+            
+        }
+    });
 });
 
 $('#experiencies').on("click", "#editar", function(){
@@ -409,6 +418,29 @@ $(document).ready(function(){
                 printLogged();
             }
         });
+    });
+
+    $('#eliminarXP').click(function() {
+        var id = $('#eliminarXP').attr("eliminarID");
+        console.log(id);
+        document.getElementById("overlayEliminar").classList.remove("active");
+        document.getElementById("popupEliminar").classList.remove("active");
+        
+        $.ajax({
+            url: "php/eliminarExperiencia.php",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function(){
+                printLogged();
+            }
+        });
+    });
+
+    $('#cerrarEliminarXP').click(function() {
+        document.getElementById('overlayEliminar').classList.remove('active');
+        document.getElementById('popupEliminar').classList.remove('active');
     });
 
     $('#btn-personal').click(function() {

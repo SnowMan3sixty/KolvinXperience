@@ -158,6 +158,23 @@
         </div> 
       </div>
     </div>
+    <!--  POPUP DELETE -->
+    <div class="overlay" id="overlayEliminar">
+      <div class="popup" id="popupEliminar">
+        <div><a href="#" id="btn-cerrar-popupEliminar" class="btn-cerrar-popup">X</a></div>
+        <h3>Elimina tu experiencia</h3>
+        <div id="formulario">
+          <div class="contenedor-inputs">
+            <form class="form-Editar">
+              <div>¿Estás seguro de que deseas eliminar esta experiencia?</div>
+            </form>
+            <p id="messageEliminar" class= "message-error"></p>
+          </div>
+          <button id="eliminarXP" type="submit" class="btn-submit" eliminarID="">Aceptar</button>
+          <button id="cerrarEliminarXP" type="submit" class="btn-submit">Cancelar</button>
+        </div> 
+      </div>
+    </div>
     <!--  POPUP PERSONAL -->
     <div class="overlay" id="overlayPersonal">
       <div class="popup" id="popupPersonal">
