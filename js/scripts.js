@@ -145,9 +145,18 @@ function getUserNameID(username){
 }
 
 $('#experiencies').on("click", "#examinar", function(){
-    
-    document.getElementById('overlayDetails').classList.add('active');
-    document.getElementById('popupDetails').classList.add('active');
+    if(document.getElementById('overlayEditar').classList.contains('active')){        
+        document.getElementById('overlayDetails').classList.remove('active');
+        document.getElementById('popupDetails').classList.remove('active');
+    }
+   /* else if(document.getElementById('overlayEliminar').classList.contains('active')){        
+        document.getElementById('overlayDetails').classList.remove('active');
+        document.getElementById('popupDetails').classList.remove('active');
+    }*/
+    else{
+        document.getElementById('overlayDetails').classList.add('active');
+        document.getElementById('popupDetails').classList.add('active');
+    }   
 
     document.getElementById('btn-cerrar-popupDetails').addEventListener('click', function(e){
         e.preventDefault();
@@ -176,7 +185,7 @@ $('#experiencies').on("click", "#eliminar", function(){
 
 $('#experiencies').on("click", "#editar", function(){
     document.getElementById('overlayEditar').classList.add('active');
-    document.getElementById('popupEditar').classList.add('active');
+    document.getElementById('popupEditar').classList.add('active');    
 
     document.getElementById('btn-cerrar-popupEditar').addEventListener('click', function(e){
         e.preventDefault();
@@ -201,8 +210,10 @@ $('#experiencies').on("click", "#editar", function(){
             document.getElementById("contenidoEditar").setAttribute("value", experiencia['contingut']);
             document.getElementById("imagenEditar").setAttribute("value", experiencia['imatge']);
             document.getElementById("coordenadaEditar").setAttribute("value", experiencia['coordenadas']);
+            
         }
     });
+    
 });
 
 //Botones
