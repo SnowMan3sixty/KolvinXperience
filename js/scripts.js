@@ -84,7 +84,7 @@ function printExperiencias(experiencies){
 
     for(let i = 0; i< experiencies.length; i++){
         var xperiencia = experiencies[i];
-        experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] + '" class="btn-popup">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
+        experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] + '" class="btn-popup" id="examinar">Examinar</button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
         activeShowMoreButton(i,xperiencia['id']);
     }
 }
@@ -195,6 +195,25 @@ $('#experiencies').on("click", "#editar", function(){
         }
     });
 });
+
+// $('#reportar').click(function() {
+//     if(confirm("¿Estás seguro de que deseas reportar esta experiencia?")){
+//         alert("Experiencia reportada correctamente");
+//         var id = $(this).attr("numID");
+//         console.log(id);
+
+//         $.ajax({
+//             url: "php/reportarExperiencia.php",
+//             type: "post",
+//             data: {
+//                 id: id
+//             },
+//             success: function(){
+//                 printExperiencias();
+//             }
+//         });
+//     }
+// });
 
 //Botones
 $(document).ready(function(){
@@ -434,6 +453,11 @@ $(document).ready(function(){
             }
         });
     });
+
+    $('#filtreCat').on('change', '#inputCat', (function() {
+        var categoria= $(this).val();
+        filtreExperiencia(categoria);
+    }));
 });
 
 function filtreExperiencia(categoria){

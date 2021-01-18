@@ -1,6 +1,6 @@
 <?php
 
-require_once('checkUser.php');
+require_once('Usuari.php');
 
 
 $username =  $_REQUEST['username'];

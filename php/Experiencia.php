@@ -9,7 +9,7 @@ class Experiencia extends DBAbstractModel {
     }
 
     public function selectUltimesExperiencies() {
-        $this->query = "SELECT * FROM experiencia ORDER BY fecha_publ DESC LIMIT 6";
+        $this->query = "SELECT * FROM experiencia WHERE estat = 'publicada' ORDER BY fecha_publ DESC LIMIT 6";
         $this->get_results_from_query();
 
         if (count($this->rows)==1) {
@@ -21,7 +21,7 @@ class Experiencia extends DBAbstractModel {
     }
 
     public function selectUltimesExperienciesSenseLimits() {
-        $this->query = "SELECT * FROM experiencia ORDER BY fecha_publ";
+        $this->query = "SELECT * FROM experiencia WHERE estat = 'publicada' ORDER BY fecha_publ";
         $this->get_results_from_query();
 
         if (count($this->rows)==1) {
@@ -48,7 +48,7 @@ class Experiencia extends DBAbstractModel {
         $query = "SELECT * FROM experiencia";
         $where = "";
         if($categoria != "todas"){
-            $where = " WHERE id_cat = $categoria";
+            $where = " WHERE estat = 'publicada' and id_cat = $categoria";
         }
         $finalquery = $query . $where;
         
@@ -77,6 +77,13 @@ class Experiencia extends DBAbstractModel {
     
     public function editarExperiencia($id, $titulo, $contenido, $imagen, $coordenada){
         $this->query = "UPDATE experiencia SET titol = '$titulo', contingut = '$contenido', imatge = '$imagen', coordenadas = '$coordenada' WHERE id = '$id'";
+        $this->execute_single_query();
+
+        return "OK";
+    }
+
+    public function reportarExperiencia($id){
+        $this->query = "UPDATE experiencia SET estat = 'rebutjada' WHERE id = '$id'";
         $this->execute_single_query();
 
         return "OK";
