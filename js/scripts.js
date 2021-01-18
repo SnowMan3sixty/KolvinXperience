@@ -47,45 +47,45 @@ function printLogged() {
             }
         }
     });
-    /*
+    
+    $.ajax({
+        url: "php/getCategories.php",
+        type: "post",
+        success: function(){
+            printFiltros();
+        }
+    });
+
+}
+
+function printFiltros(){
     $.ajax({
         url: "php/getCategories.php",
         type: "post",
         success: function(result){
             var resultObj = JSON.parse(result);
-
-            if(resultObj.status == 'OK'){
-                var html= '<select id="inputCat">'+
-                '<option value="todas">Todas</option>';
-                for(var i = 0;i < resultObj.datos.length; i++){
-                    var categoria = resultObj.datos[i];
-                    html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
-                }
-                html+='</select>';
-                $('#filtreCat').html(html);
+            var html= '<select id="inputCat">'+'<option value="todas">Categorias</option>';
+            for(var i = 0;i < resultObj.datos.length; i++){
+                var categoria = resultObj.datos[i];
+                html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
             }
-        }
-    });*/
-
-}
-
-function printExperiencias(){
-    $.ajax({
-        url: "php/getAllExperiencies.php",
-        type: "post",
-        success: function(result){
-            var resultObj = JSON.parse(result);
-
-            var experienciesDiv = $('#experiencies');
-            experienciesDiv.html('');
-
-            for(let i = 0; i< resultObj.length; i++){
-                var xperiencia = resultObj[i];
-                experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
-            }
+            html+='</select>';
+            $('#filtreCat').html(html);
         }
     });
 }
+
+function printExperiencias(experiencies){
+
+    var experienciesDiv = $('#experiencies');
+    experienciesDiv.html('');
+
+    for(let i = 0; i< experiencies.length; i++){
+        var xperiencia = experiencies[i];
+        experienciesDiv.html(experienciesDiv.html() + '<div class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar">Eliminar</button><button numID="' + xperiencia['id'] +'" id="editar">Editar</button></div>');
+    }
+}
+
 
 function activeShowMoreButton(position,id){
     console.log("activeShowMoreButton i=" + position + " id = " + id );
@@ -384,5 +384,26 @@ $(document).ready(function(){
                 printExperiencias();
             }
         });
-    });    
+    });
+    
+    $('#filtreCat').on('change', '#inputCat', (function() {
+        var categoria= $(this).val();
+        filtreExperiencia(categoria);
+    }));
+
 });
+
+function filtreExperiencia(categoria){
+    $.ajax({
+        url: "php/filtrarExperiencies.php",
+        type: "post",
+        data: {
+            categoria : categoria
+        },
+        success: function(result){
+            var resultObj = JSON.parse(result);
+
+            printExperiencias(resultObj)
+        }
+    });
+}

@@ -44,6 +44,25 @@ class Experiencia extends DBAbstractModel {
         return $this->rows;
     }
 
+    public function selectExperienciesFiltrades($categoria) {
+        $query = "SELECT * FROM experiencia";
+        $where = "";
+        if($categoria != "todas"){
+            $where = " WHERE id_cat = $categoria";
+        }
+        $finalquery = $query . $where;
+        
+        $this->query = $finalquery;
+        $this->get_results_from_query();
+
+        if (count($this->rows)==1) {
+            foreach ($this->rows[0] as $property => $value)
+            $this->$property = $value;
+        }
+
+        return $this->rows;
+    }
+
     public function crearExperiencia($titulo, $contenido, $imagen, $coordenada){
         $this->query = "INSERT INTO experiencia (titol, contingut, imatge, coordenadas) VALUES ('$titulo', '$contenido', '$imagen', '$coordenada')";
         $this->execute_single_query();
