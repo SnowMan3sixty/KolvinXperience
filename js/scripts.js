@@ -143,9 +143,14 @@ function getUserNameID(username){
 }
 
 $('#experiencies').on("click", "#examinar", function(){
-    if(document.getElementById('overlayEditar').classList.contains('active') || document.getElementById('overlayEliminar').classList.contains('active')){        
-
+    if(document.getElementById('overlayEditar').classList.contains('active')){        
+        document.getElementById('overlayDetails').classList.remove('active');
+        document.getElementById('popupDetails').classList.remove('active');
     }
+   /* else if(document.getElementById('overlayEliminar').classList.contains('active')){        
+        document.getElementById('overlayDetails').classList.remove('active');
+        document.getElementById('popupDetails').classList.remove('active');
+    }*/
     else{
         document.getElementById('overlayDetails').classList.add('active');
         document.getElementById('popupDetails').classList.add('active');
