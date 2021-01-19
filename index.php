@@ -37,7 +37,8 @@
             <a href="logout.php" style="display: none;" id="btn-logout" class="btn-popup">Salir</a>
         </div>
     </div>
-    <div id="bienvenida"></div>
+
+    <p id="bienvenida"></p><img src="./img/logo.png" class="header-left" alt="logo" width="500px" height="350px">
 
     <div style="text-align: center;">
       <h1>Últimas Experiencias</h1>

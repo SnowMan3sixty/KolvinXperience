@@ -178,9 +178,10 @@ i {
 /*FIN DETAILS POPUP*/
 
 .header-left {
-    text-align: left;
     /*transition: transform 2s;*/
     animation: logo 5s 1;
+    margin-top: -300px;
+    position: absolute;
 }
 
 @keyframes logo {
