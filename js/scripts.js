@@ -1,5 +1,5 @@
 function printNoLogged() {
-    $('#bienvenida').html('<div class="container"><div class="row"><div><h1>Bienvenido</h1><br><p id="mensajeBienvenida">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae officiacumque nostrum neque, incidunt corrupti. Eaque praesentium modi cumque amet aliquam ea fugitexplicabo dolores quod sapiente? Repudiandae, quae. Ut.</p></div></div></div>');
+    $('#bienvenida').html('<img src="./img/logo.png" class="header-left" alt="logo" width="400px" height="250px"><div class="container"><div class="row"><div><h1>Bienvenido</h1><br><p id="mensajeBienvenida">Planifica y comparte en este maravilloso portal en el que puedes compartir y visualizar tus ideas sobre viajes y experiencias. Encontraras categorias de todo tipo, desde las familiares a las mas extremas.</p></div></div></div>');
     $.ajax({
         url: "php/getExperiencies.php",
         type: "post",

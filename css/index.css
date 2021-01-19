@@ -180,7 +180,7 @@ i {
 .header-left {
     /*transition: transform 2s;*/
     animation: logo 5s 1;
-    margin-top: -300px;
+    margin-top: -50px;
     position: absolute;
 }
 
@@ -666,4 +666,9 @@ i {
 .py-5{
     background-color: #c4e4f4 !important;
     width: 100%;
+}
+
+/*welcome container*/
+#bienvenida > img {
+    z-index: -1;
 }

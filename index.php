@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <p id="bienvenida"></p><img src="./img/logo.png" class="header-left" alt="logo" width="500px" height="350px">
+    <p id="bienvenida"></p>
 
     <div style="text-align: center;">
       <h1>Últimas Experiencias</h1>
