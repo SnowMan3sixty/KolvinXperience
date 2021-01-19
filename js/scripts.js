@@ -68,8 +68,25 @@ function printFiltros(){
                 var categoria = resultObj.datos[i];
                 html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
             }
-            html+='</select>';
+            html+='</select>';            
             $('#filtreCat').html(html);
+        }
+    });
+}
+
+function printCategoriasCreate(){
+    $.ajax({
+        url: "php/getCategories.php",
+        type: "post",
+        success: function(result){
+            var resultObj = JSON.parse(result);
+            var html= ' Categoria: <select id="inputCatCreate">';
+            for(var i = 0;i < resultObj.datos.length; i++){
+                var categoria = resultObj.datos[i];
+                html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
+            }
+            html+='</select>';            
+            $('#categoriasCrear').html(html);
         }
     });
 }
@@ -338,6 +355,7 @@ $(document).ready(function(){
     });
 
     $('#crearXP').click(function() {
+        var categoria = $('#inputCatCreate').val();
         var titulo = $('#tituloCrear').val();
         var contenido = $('#contenidoCrear').val();
         var imagen = $('#imagenCrear').val();
@@ -348,6 +366,7 @@ $(document).ready(function(){
         console.log(contenido);
         console.log(imagen);
         console.log(coordenada);
+        console.log(categoria);
         document.getElementById("overlayCrear").classList.remove("active");
         document.getElementById("popupCrear").classList.remove("active");       
         //AQUI
@@ -359,7 +378,8 @@ $(document).ready(function(){
                 contenido: contenido,
                 imagen: imagen,
                 coordenada: coordenada,
-                user: userId[2]
+                user: userId[2],
+                categoria : categoria
             },
             success: function(){
                 printLogged();
@@ -556,6 +576,10 @@ $(document).ready(function(){
         });
     });
 
+    $('#btn-crear').click(function(){
+       printCategoriasCreate();
+    });
+
 });
 
 function filtreExperiencia(categoria){
@@ -584,7 +608,6 @@ function getUserNameCookie(){
 
 }
 function getUserNameID(username){
-    var userId;
 
     $.ajax({
         url: "php/getUserID.php",
