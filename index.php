@@ -18,7 +18,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="icon" href="icon.ico">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
@@ -35,7 +34,7 @@
         <div class="col-7 col-lg-4" id="headerRight" style="margin-top: 5px;">
             <button id="btn-abrir-popup" class="btn-popup">Ir al Login</button>
             <button id="btn-registrar" class="btn-popup">Registrar</button>
-            <a href="php/logout.php" style="display: none;" id="btn-logout" class="btn-popup">Salir</a>
+            <a href="logout.php" style="display: none;" id="btn-logout" class="btn-popup">Salir</a>
         </div>
     </div>
     <div id="bienvenida"></div>

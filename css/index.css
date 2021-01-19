@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4fafb;
 }
 
 body {
@@ -510,4 +511,140 @@ i {
     display:block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.flexible{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: center;
+
+}
+
+#main-header {
+	background: #c4e4f4;
+	color: white;
+	height: 80px;
+	
+	width: 100%;
+	left: 0;
+	top: 0;
+	position: absolute;
+}
+
+#logo{
+    border-radius: 15px;
+    width:200px;
+}
+
+#object_plane {
+    transform: translate(400%, -100%);
+    position: relative;
+    -webkit-animation: mymove 5s 1; /* Safari 4.0 - 8.0 */
+    animation: mymove 5s 1;
+}
+
+@-webkit-keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+}
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+}
+
+.display-4{
+    text-align: center;
+    margin: 10px;
+}
+
+.experiencia{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#bienvenida{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+#mensajeBienvenida{
+    margin-top: 35px;
+    transform: translate(0%, -70%);
+}
+
+.margin-bottom-20{
+    margin-bottom: 20px !important;
+}
+
+.message-error{
+    color: red;
+}
+
+#btnSortir{
+    float: right;
+}
+
+#registrar{
+    float: right;
+}
+
+#headerRight{
+    padding-right: 62px;
+}
+
+.like{
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 50%;
+    color: rgba(0,150,136 ,1);
+    background-color: rgba(38,166,154 ,0.3);
+    border-color: rgba(0,150,136 ,1);
+    border-width: 1px;
+    font-size: 15px;
+    margin-right: 8px;
+}
+
+.dislike{
+    width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	border-radius: 50%;
+	color: rgba(255,82,82 ,1);
+	background-color: rgba(255,138,128 ,0.3);
+	border-color: rgba(255,82,82 ,1);
+	border-width: 1px;
+    font-size: 15px;
+    margin-right: 8px;
+}
+
+.color-cyan{
+    color: rgba(0,150,136 ,1);
+    display: inline;
+}
+
+.color-red{
+    color: rgba(255,82,82 ,1);
+    display: inline;
+}
+
+.padding-8-4{
+    padding-left: 8px;
+    padding-right: 4px;
+}
+
+.padding-4-8{
+    padding-left: 4px;
+    padding-right: 8px;
+}
+
+#filtreCat{
+    padding-right: 8px;
+}
+.py-5{
+    background-color: #c4e4f4 !important;
+    width: 100%;
 }
