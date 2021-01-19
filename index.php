@@ -102,6 +102,7 @@
         <div id="formulario">
           <div class="contenedor-inputs">
             <form class="form-Crear">
+              <div id="categoriasCrear">Categoria: </div>
               <input id="tituloCrear" type="text" placeholder="Título" required>
               <input id="contenidoCrear" type="text" placeholder="Contenido" required>
               <input id="imagenCrear" type="text" placeholder="URL de la imagen" required>

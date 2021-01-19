@@ -68,20 +68,42 @@ function printFiltros(){
                 var categoria = resultObj.datos[i];
                 html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
             }
-            html+='</select>';
+            html+='</select>';            
             $('#filtreCat').html(html);
         }
     });
 }
 
-function printExperiencias(experiencies){
+function printCategoriasCreate(){
+    $.ajax({
+        url: "php/getCategories.php",
+        type: "post",
+        success: function(result){
+            var resultObj = JSON.parse(result);
+            var html= ' Categoria: <select id="inputCatCreate">';
+            for(var i = 0;i < resultObj.datos.length; i++){
+                var categoria = resultObj.datos[i];
+                html +='<option value="'+categoria['id']+'">'+categoria['nom']+'</option>';
+            }
+            html+='</select>';            
+            $('#categoriasCrear').html(html);
+        }
+    });
+}
 
+function printExperiencias(experiencies){
+    var id = document.cookie.match(new RegExp('(^| )' + 'userid' + '=([^;]+)'));
     var experienciesDiv = $('#experiencies');
     experienciesDiv.html('');
 
     for(let i = 0; i< experiencies.length; i++){
         var xperiencia = experiencies[i];
-        experienciesDiv.html(experienciesDiv.html() + '<div id="examinar" numID="'+ xperiencia['id'] +'" class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
+        decoracion='<div id="examinar" numID="'+ xperiencia['id'] +'" class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img>';
+        if(id[2] == 1 || id[2] == xperiencia['id_us']) {
+            decoracion += '<button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button>';
+        }
+        decoracion += "</div>";
+        experienciesDiv.html(experienciesDiv.html() + decoracion);
         activeShowMoreButton(i,xperiencia['id']);
     }
 }
@@ -338,6 +360,7 @@ $(document).ready(function(){
     });
 
     $('#crearXP').click(function() {
+        var categoria = $('#inputCatCreate').val();
         var titulo = $('#tituloCrear').val();
         var contenido = $('#contenidoCrear').val();
         var imagen = $('#imagenCrear').val();
@@ -348,6 +371,7 @@ $(document).ready(function(){
         console.log(contenido);
         console.log(imagen);
         console.log(coordenada);
+        console.log(categoria);
         document.getElementById("overlayCrear").classList.remove("active");
         document.getElementById("popupCrear").classList.remove("active");       
         //AQUI
@@ -359,7 +383,8 @@ $(document).ready(function(){
                 contenido: contenido,
                 imagen: imagen,
                 coordenada: coordenada,
-                user: userId[2]
+                user: userId[2],
+                categoria : categoria
             },
             success: function(){
                 printLogged();
@@ -556,6 +581,10 @@ $(document).ready(function(){
         });
     });
 
+    $('#btn-crear').click(function(){
+       printCategoriasCreate();
+    });
+
 });
 
 function filtreExperiencia(categoria){
@@ -584,7 +613,6 @@ function getUserNameCookie(){
 
 }
 function getUserNameID(username){
-    var userId;
 
     $.ajax({
         url: "php/getUserID.php",
