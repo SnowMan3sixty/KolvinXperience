@@ -86,6 +86,7 @@ class Experiencia extends DBAbstractModel {
     }
 
     public function reportarExperiencia($id){
+        $timestamp = date("Y-m-d H:i:s");
         $this->query = "SELECT estat FROM experiencia WHERE id = '$id'";
         $this->get_results_from_query();
 
@@ -95,11 +96,11 @@ class Experiencia extends DBAbstractModel {
         }
 
         if($value == "publicada"){
-            $this->query = "UPDATE experiencia SET estat = 'rebutjada' WHERE id = '$id'";
+            $this->query = "UPDATE experiencia SET estat = 'rebutjada', fecha_publ = '' WHERE id = '$id'";
             $this->execute_single_query();
             return "OK";
         }else if($value == "rebutjada"){
-            $this->query = "UPDATE experiencia SET estat = 'publicada' WHERE id = '$id'";
+            $this->query = "UPDATE experiencia SET estat = 'publicada', fecha_publ = '$timestamp' WHERE id = '$id'";
             $this->execute_single_query();
             return "OK";
         }
