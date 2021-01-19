@@ -507,5 +507,7 @@ i {
     -webkit-appearance: button;
     appearance: button;
     outline: none;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
 }
-
