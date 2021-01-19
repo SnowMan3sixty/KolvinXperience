@@ -75,13 +75,18 @@ function printFiltros(){
 }
 
 function printExperiencias(experiencies){
-
+    var id = document.cookie.match(new RegExp('(^| )' + 'userid' + '=([^;]+)'));
     var experienciesDiv = $('#experiencies');
     experienciesDiv.html('');
 
     for(let i = 0; i< experiencies.length; i++){
         var xperiencia = experiencies[i];
-        experienciesDiv.html(experienciesDiv.html() + '<div id="examinar" numID="'+ xperiencia['id'] +'" class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img><button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button></div>');
+        decoracion='<div id="examinar" numID="'+ xperiencia['id'] +'" class="ultimesEx"><div class="titleExperiencia">' + xperiencia['titol'] + '</div><img class="imgExperiencia" src="' + xperiencia['imatge'] +'" width="286" height="180"></img>';
+        if(id[2] == 1 || id[2] == xperiencia['id_us']) {
+            decoracion += '<button numID="' + xperiencia['id'] +'" id="eliminar"><i class="fas fa-trash-alt"></i></button><button numID="' + xperiencia['id'] +'" id="editar"><i class="far fa-edit"></i></button>';
+        }
+        decoracion += "</div>";
+        experienciesDiv.html(experienciesDiv.html() + decoracion);
         activeShowMoreButton(i,xperiencia['id']);
     }
 }
