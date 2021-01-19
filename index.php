@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <!-- <?php include('header.php');?> -->
+    <!-- <?php include('php/header.php');?> -->
 
     <div class="navbar" id="navbar">
         <a id="logo" href = "index.php"><img src="./img/logo.png" alt="logo" width="100" height="70"></a>
@@ -35,7 +35,7 @@
         <div class="col-7 col-lg-4" id="headerRight" style="margin-top: 5px;">
             <button id="btn-abrir-popup" class="btn-popup">Ir al Login</button>
             <button id="btn-registrar" class="btn-popup">Registrar</button>
-            <a href="logout.php" style="display: none;" id="btn-logout" class="btn-popup">Salir</a>
+            <a href="php/logout.php" style="display: none;" id="btn-logout" class="btn-popup">Salir</a>
         </div>
     </div>
     <div id="bienvenida"></div>
@@ -196,7 +196,7 @@
 
     <!-- Footer -->
 
-    <?php include('footer.php');?>
+    <?php include('php/footer.php');?>
 
     <script type="text/javascript" src="js/scripts.js"></script>
     <script src="./js/popup.js"></script>
