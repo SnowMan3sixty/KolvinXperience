@@ -18,7 +18,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="icon" href="icon.ico">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
@@ -27,7 +26,7 @@
 </head>
 
 <body>
-    <!-- <?php include('header.php');?> -->
+    <!-- <?php include('php/header.php');?> -->
 
     <div class="navbar" id="navbar">
         <a id="logo" href = "index.php"><img src="./img/logo.png" alt="logo" width="100" height="70"></a>
@@ -197,7 +196,7 @@
 
     <!-- Footer -->
 
-    <?php include('footer.php');?>
+    <?php include('php/footer.php');?>
 
     <script type="text/javascript" src="js/scripts.js"></script>
     <script src="./js/popup.js"></script>
