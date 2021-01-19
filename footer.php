@@ -1,17 +1,19 @@
 <style>
 .footer {
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #1B3353;
-   color: white;
-   text-align: center;
-   justify-content: space-between;
+    /* position: absolute; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1B3353;
+    color: white;
+    text-align: center;
+    justify-content: space-between;
 }
 
 .copyright{
     position: right;
 }
+
 
 </style>
     <div class="footer">

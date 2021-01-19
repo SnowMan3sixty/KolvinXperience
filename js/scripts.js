@@ -23,6 +23,7 @@ function printNoLogged() {
 }
 
 function printLogged() {
+    var admin = document.cookie.match(new RegExp('(^| )' + 'username' + '=([^;]+)'));
     $('#bienvenida').hide();
     $('#overlay').hide();
     $('#overlayreg').hide();
@@ -31,8 +32,10 @@ function printLogged() {
     $('#btn-registrar').hide();
     $('#btn-crear').show();
     $('#btn-personal').show();
-    $('#btn-reportadas').show();
-    $('#btn-borrador').show();
+    if (admin[2] == "admin") {
+        $('#btn-reportadas').show();
+        $('#btn-borrador').show();
+    }
 
     $.ajax({
         url: "php/getAllExperiencies.php",
@@ -85,9 +88,9 @@ function printExperiencias(experiencies){
 
 
 function activeShowMoreButton(position,id){
-    console.log("activeShowMoreButton i=" + position + " id = " + id );
+    // console.log("activeShowMoreButton i=" + position + " id = " + id );
     var nombreBoton = "btn-verExperiencia" + position;
-    console.log(nombreBoton);
+    // console.log(nombreBoton);
    
     $('#experiencies').on("click","#examinar",function() {
         var id = $(this).attr("numID");
@@ -116,33 +119,6 @@ function activeShowMoreButton(position,id){
         });
     });
     
-}
-
-function getUserNameCookie(){
-    var match = document.cookie.match(new RegExp('(^| )' + 'username' + '=([^;]+)'));
-    if (match) {
-        return match[2];
-    }
-    else{
-       return false;
-    }
-
-}
-function getUserNameID(username){
-    var userId;
-
-    $.ajax({
-        url: "php/getUserID.php",
-        type: "post",
-        data: {
-            user: username
-        },
-        success: function(result){
-            var resultObj = JSON.parse(result);
-            var userId = resultObj[0]['id'];
-            document.cookie = "userid=" + userId;
-        }        
-    });
 }
 
 $('#experiencies').on("click", "#examinar", function(){
@@ -594,5 +570,32 @@ function filtreExperiencia(categoria){
 
             printExperiencias(resultObj)
         }
+    });
+}
+
+function getUserNameCookie(){
+    var match = document.cookie.match(new RegExp('(^| )' + 'username' + '=([^;]+)'));
+    if (match) {
+        return match[2];
+    }
+    else{
+       return false;
+    }
+
+}
+function getUserNameID(username){
+    var userId;
+
+    $.ajax({
+        url: "php/getUserID.php",
+        type: "post",
+        data: {
+            user: username
+        },
+        success: function(result){
+            var resultObj = JSON.parse(result);
+            var userId = resultObj[0]['id'];
+            document.cookie = "userid=" + userId;
+        }        
     });
 }

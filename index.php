@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <?php include('header.php');?>
+    <!-- <?php include('header.php');?> -->
 
     <div class="navbar" id="navbar">
         <a id="logo" href = "index.php"><img src="./img/logo.png" alt="logo" width="100" height="70"></a>
@@ -42,19 +42,15 @@
 
     <div style="text-align: center;">
       <h1>Últimas Experiencias</h1>
-      <button style="display: none;" id="btn-crear" class="btn-popup">Crear experiencia</button>
-      <button style="display: none;" id="btn-personal" class="btn-popup">Ver mi información personal</button>
-      <button style="display: none;" id="btn-reportadas" class="btn-popup">Ver experiencias reportadas</button>
-      <button style="display: none;" id="btn-borrador" class="btn-popup">Ver experiencias en borrador</button>
+      <button style="display: none;" id="btn-crear" class="btn-popup botones">Crear experiencia</button>
+      <button style="display: none;" id="btn-personal" class="btn-popup botones">Ver mi información personal</button>
+      <button style="display: none;" id="btn-reportadas" class="btn-popup botones">Ver experiencias reportadas</button>
+      <button style="display: none;" id="btn-borrador" class="btn-popup botones">Ver experiencias en borrador</button>
     </div>
     
 
-    <div class="container margin-bottom-20">
-        <div class="row d-flex flex-row-reverse bd-highlight col-12">
-            <div id="afegir"></div>
-            <div id="filtreCat"></div>
-            <div id="ordenacio"></div>
-        </div>
+    <div id="div_filtros" class="container margin-bottom-20">
+        <div id="filtreCat"></div>
     </div>
     <div class="container">
         <div class="row" id="experiencies">
